@@ -6,6 +6,7 @@
   "author": "Alberto Rico",
   "license": "MIT",
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-jest": "^24.0.2",
     "jest": "^26.4.2"
