@@ -37,6 +37,7 @@
   - [.getGeoJSONBBox(geojson)](#BBoxFunctions.getGeoJSONBBox) ⇒ [<code>BBox</code>](#BBox)
   - [.getWKBBox(wk, [type])](#BBoxFunctions.getWKBBox) ⇒ [<code>BBox</code>](#BBox)
   - [.getBBoxSQLSentence(bbox, latitudeCol, longitudeCol)](#BBoxFunctions.getBBoxSQLSentence) ⇒ <code>string</code>
+  - [.getGeohashBBox(geohash)](#BBoxFunctions.getGeohashBBox) ⇒ <code>Array.&lt;number&gt;</code>
 
 <a name="new_BBoxFunctions_new"></a>
 
@@ -140,6 +141,19 @@ Assumes latitude and longitude are in separate columns
 | bbox         | [<code>BBox</code>](#BBox) | The bounding box to convert to SQL sentence |
 | latitudeCol  | <code>string</code>        | The latitude column name                    |
 | longitudeCol | <code>string</code>        | The longitude column name                   |
+
+<a name="BBoxFunctions.getGeohashBBox"></a>
+
+### BBoxFunctions.getGeohashBBox(geohash) ⇒ <code>Array.&lt;number&gt;</code>
+
+Converts geohash to BBox
+
+**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
+**Returns**: <code>Array.&lt;number&gt;</code> - [minLon, minLat, maxLon, maxLat]
+
+| Param   | Type                | Description                |
+| ------- | ------------------- | -------------------------- |
+| geohash | <code>string</code> | Geohash to convert to BBox |
 
 <a name="BBox"></a>
 

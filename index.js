@@ -1,5 +1,6 @@
 const {convertToWK, parseFromWK} = require('wkt-parser-helper');
 const {default: turfBBox} = require('@turf/bbox');
+const {decode_bbox} = require('ngeohash');
 const Formatter = require('string-object-formatter');
 
 /**
@@ -189,6 +190,19 @@ class BBoxFunctions {
         maxLon,
       }
     );
+  }
+
+  /**
+   * Converts geohash to BBox
+   *
+   * @static
+   * @param {string} geohash Geohash to convert to BBox
+   * @returns {number[]} [minLon, minLat, maxLon, maxLat]
+   * @memberof BBoxFunctions
+   */
+  static getGeohashBBox(geohash) {
+    const [minLat, minLon, maxLat, maxLon] = decode_bbox(geohash);
+    return [minLon, minLat, maxLon, maxLat];
   }
 }
 

@@ -1,5 +1,7 @@
 const BBoxHelper = require('../index');
 const {convertToWK} = require('wkt-parser-helper');
+const {geohashToPolygonFeature} = require('geohash-to-geojson');
+const {default: turfBbox} = require('@turf/bbox');
 
 const TEST_BBOX = [-3.708011, 40.418038, -3.687877, 40.428754];
 
@@ -72,6 +74,13 @@ describe('Testing BBoxHelper methods', () => {
       'longitude'
     );
     expect(sql).toBe(`AND latitude < ${maxLat} AND latitude > ${minLat} AND longitude < ${maxLon} AND longitude > ${minLon}`);
+  });
+
+  test('The BBox of a geohash should be the same as the BBox of the GeoJSON feature representation of the geohash', () => {
+    const geohash = 'ezy';
+    const geohashBBox = BBoxHelper.getGeohashBBox(geohash);
+    const featureBBox = turfBbox(geohashToPolygonFeature(geohash));
+    expect(geohashBBox).toStrictEqual(featureBBox);
   });
 });
 
