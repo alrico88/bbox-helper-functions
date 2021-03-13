@@ -1,209 +1,213 @@
-## Classes
+# bbox-helper-functions
 
-<dl>
-<dt><a href="#BBoxFunctions">BBoxFunctions</a></dt>
-<dd></dd>
-</dl>
+## Installation
 
-## Typedefs
+Using npm `npm i bbox-helper-functions`
 
-<dl>
-<dt><a href="#BBox">BBox</a> : <code>Array.&lt;number&gt;</code></dt>
-<dd><p>[minLon, minLat, maxLon, maxLat]</p>
-</dd>
-<dt><a href="#Coordinate">Coordinate</a> : <code>Array.&lt;number&gt;</code></dt>
-<dd><p>[latitude, longitude]</p>
-</dd>
-<dt><a href="#CornersBBox">CornersBBox</a></dt>
-<dd></dd>
-<dt><a href="#GeoJSONPolygon">GeoJSONPolygon</a></dt>
-<dd></dd>
-<dt><a href="#GeoJSONFeature">GeoJSONFeature</a></dt>
-<dd></dd>
-</dl>
+Using yarn `yarn add bbox-helper-functions`
 
-<a name="BBoxFunctions"></a>
+## Usage
 
-## BBoxFunctions
+In CommonJS env
 
-**Kind**: global class
+```javascript
+const { getWKBBox } = require('bbox-helper-functions');
 
-- [BBoxFunctions](#BBoxFunctions)
-  - [new BBoxFunctions()](#new_BBoxFunctions_new)
-  - [.BBoxToCorners(bbox)](#BBoxFunctions.BBoxToCorners) ⇒ [<code>CornersBBox</code>](#CornersBBox)
-  - [.BBoxToWK(bbox, [type])](#BBoxFunctions.BBoxToWK) ⇒ <code>string</code> \| <code>Buffer</code>
-  - [.BBoxToGeoJSONPolygon(bbox)](#BBoxFunctions.BBoxToGeoJSONPolygon) ⇒ [<code>GeoJSONPolygon</code>](#GeoJSONPolygon)
-  - [.BBoxToGeoJSONFeature(bbox, [properties])](#BBoxFunctions.BBoxToGeoJSONFeature) ⇒ [<code>GeoJSONFeature</code>](#GeoJSONFeature)
-  - [.getGeoJSONBBox(geojson)](#BBoxFunctions.getGeoJSONBBox) ⇒ [<code>BBox</code>](#BBox)
-  - [.getWKBBox(wk, [type])](#BBoxFunctions.getWKBBox) ⇒ [<code>BBox</code>](#BBox)
-  - [.getBBoxSQLSentence(bbox, latitudeCol, longitudeCol)](#BBoxFunctions.getBBoxSQLSentence) ⇒ <code>string</code>
-  - [.getGeohashBBox(geohash)](#BBoxFunctions.getGeohashBBox) ⇒ <code>Array.&lt;number&gt;</code>
+const bbox = getWKBBox(
+  'POLYGON((-3.706512451171875 40.420074462890625,-3.70513916015625 40.420074462890625,-3.70513916015625 40.42144775390625,-3.706512451171875 40.42144775390625,-3.706512451171875 40.420074462890625))'
+);
 
-<a name="new_BBoxFunctions_new"></a>
+// bbox will be [minLon, minLat, maxLon, maxLat]
+```
 
-### new BBoxFunctions()
+Using imports
 
-Compendium of methods to manipulate BBoxes
+```javascript
+import { getGeohashBBox } from 'bbox-helper-functions';
 
-<a name="BBoxFunctions.BBoxToCorners"></a>
+const geohashBBox = getGeohashBBox('ezjmun');
 
-### BBoxFunctions.BBoxToCorners(bbox) ⇒ [<code>CornersBBox</code>](#CornersBBox)
+// geohashBBox will be [minLon, minLat, maxLon, maxLat]
+```
 
-Converts BBox to corners object, getting coordinates for sw, nw, ne, se
+## Table of contents
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: [<code>CornersBBox</code>](#CornersBBox) - The object representing the corners of the bounding box
+### Type aliases
 
-| Param | Type                       | Description                 |
-| ----- | -------------------------- | --------------------------- |
-| bbox  | [<code>BBox</code>](#BBox) | The bounding box to convert |
+- [BBox](#bbox)
 
-<a name="BBoxFunctions.BBoxToWK"></a>
+### Functions
 
-### BBoxFunctions.BBoxToWK(bbox, [type]) ⇒ <code>string</code> \| <code>Buffer</code>
+- [BBoxToCorners](#bboxtocorners)
+- [BBoxToGeoJSONFeature](#bboxtogeojsonfeature)
+- [BBoxToGeoJSONPolygon](#bboxtogeojsonpolygon)
+- [BBoxToWK](#bboxtowk)
+- [getBBoxSQLSentence](#getbboxsqlsentence)
+- [getGeoJSONBBox](#getgeojsonbbox)
+- [getGeohashBBox](#getgeohashbbox)
+- [getWKBBox](#getwkbbox)
 
-Converts a bounding box to a WKT string
+## Type aliases
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: <code>string</code> \| <code>Buffer</code> - The well-known representation of the bounding box
+### BBox
 
-| Param  | Type                                                         | Default                      | Description                 |
-| ------ | ------------------------------------------------------------ | ---------------------------- | --------------------------- |
-| bbox   | [<code>BBox</code>](#BBox)                                   |                              | The bounding box to convert |
-| [type] | <code>&#x27;wkt&#x27;</code> \| <code>&#x27;wkb&#x27;</code> | <code>&quot;wkt&quot;</code> | Well-known type             |
+Ƭ **BBox**: [*number*, *number*, *number*, *number*]
 
-<a name="BBoxFunctions.BBoxToGeoJSONPolygon"></a>
+Defined in: modules/bbox.ts:2
 
-### BBoxFunctions.BBoxToGeoJSONPolygon(bbox) ⇒ [<code>GeoJSONPolygon</code>](#GeoJSONPolygon)
+## Functions
 
-Converts bounding box to a GeoJSON Polygon geometry
+### BBoxToCorners
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: [<code>GeoJSONPolygon</code>](#GeoJSONPolygon) - The GeoJSON polygon geometry representation
+▸ **BBoxToCorners**(`bbox`: [_BBox_](#bbox)): Corners
 
-| Param | Type                       | Description                 |
-| ----- | -------------------------- | --------------------------- |
-| bbox  | [<code>BBox</code>](#BBox) | The bounding box to convert |
+Gets corners from a bbox
 
-<a name="BBoxFunctions.BBoxToGeoJSONFeature"></a>
+**`export`**
 
-### BBoxFunctions.BBoxToGeoJSONFeature(bbox, [properties]) ⇒ [<code>GeoJSONFeature</code>](#GeoJSONFeature)
+#### Parameters:
 
-Converts bounding box to a GeoJSON Polygon feature
+| Name   | Type            | Description            |
+| :----- | :-------------- | :--------------------- |
+| `bbox` | [_BBox_](#bbox) | BBox to get corners of |
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: [<code>GeoJSONFeature</code>](#GeoJSONFeature) - GeoJSON feature
+**Returns:** Corners
 
-| Param        | Type                       | Default         | Description                            |
-| ------------ | -------------------------- | --------------- | -------------------------------------- |
-| bbox         | [<code>BBox</code>](#BBox) |                 | The bounding box to convert            |
-| [properties] | <code>object</code>        | <code>{}</code> | Properties to embed in GeoJSON feature |
+The corners as [lat, lon] coordinates
 
-<a name="BBoxFunctions.getGeoJSONBBox"></a>
+Defined in: modules/helpers.ts:84
 
-### BBoxFunctions.getGeoJSONBBox(geojson) ⇒ [<code>BBox</code>](#BBox)
+---
 
-Gets the bounding box of any GeoJSON
+### BBoxToGeoJSONFeature
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: [<code>BBox</code>](#BBox) - The GeoJSON bounding box
+▸ **BBoxToGeoJSONFeature**(`bbox`: [_BBox_](#bbox), `properties?`: GeoJsonProperties): _Feature_<Polygon\>
 
-| Param   | Type                | Description                    |
-| ------- | ------------------- | ------------------------------ |
-| geojson | <code>object</code> | GeoJSON to get bounding box of |
+#### Parameters:
 
-<a name="BBoxFunctions.getWKBBox"></a>
+| Name         | Type              |
+| :----------- | :---------------- |
+| `bbox`       | [_BBox_](#bbox)   |
+| `properties` | GeoJsonProperties |
 
-### BBoxFunctions.getWKBBox(wk, [type]) ⇒ [<code>BBox</code>](#BBox)
+**Returns:** _Feature_<Polygon\>
 
-Converts WKT or WKB to BBox
+Defined in: modules/geojson.ts:17
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: [<code>BBox</code>](#BBox) - The resulting bounding box
+---
 
-| Param  | Type                                                         | Default                      | Description                                      |
-| ------ | ------------------------------------------------------------ | ---------------------------- | ------------------------------------------------ |
-| wk     | <code>string</code> \| <code>Buffer</code>                   |                              | Well-known representation to get bounding box of |
-| [type] | <code>&#x27;wkt&#x27;</code> \| <code>&#x27;wkb&#x27;</code> | <code>&#x27;wkt&#x27;</code> | Type of well-known representation                |
+### BBoxToGeoJSONPolygon
 
-<a name="BBoxFunctions.getBBoxSQLSentence"></a>
+▸ **BBoxToGeoJSONPolygon**(`bbox`: [_BBox_](#bbox)): Polygon
 
-### BBoxFunctions.getBBoxSQLSentence(bbox, latitudeCol, longitudeCol) ⇒ <code>string</code>
+#### Parameters:
 
-Gets SQL sentence to query by bounding box
-Assumes latitude and longitude are in separate columns
+| Name   | Type            |
+| :----- | :-------------- |
+| `bbox` | [_BBox_](#bbox) |
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: <code>string</code> - The SQL sentence
+**Returns:** Polygon
 
-| Param        | Type                       | Description                                 |
-| ------------ | -------------------------- | ------------------------------------------- |
-| bbox         | [<code>BBox</code>](#BBox) | The bounding box to convert to SQL sentence |
-| latitudeCol  | <code>string</code>        | The latitude column name                    |
-| longitudeCol | <code>string</code>        | The longitude column name                   |
+Defined in: modules/geojson.ts:6
 
-<a name="BBoxFunctions.getGeohashBBox"></a>
+---
 
-### BBoxFunctions.getGeohashBBox(geohash) ⇒ <code>Array.&lt;number&gt;</code>
+### BBoxToWK
 
-Converts geohash to BBox
+▸ **BBoxToWK**(`bbox`: [_BBox_](#bbox), `type?`: WKType): _string_ \| Buffer
 
-**Kind**: static method of [<code>BBoxFunctions</code>](#BBoxFunctions)  
-**Returns**: <code>Array.&lt;number&gt;</code> - [minLon, minLat, maxLon, maxLat]
+Converts a BBox to WK
 
-| Param   | Type                | Description                |
-| ------- | ------------------- | -------------------------- |
-| geohash | <code>string</code> | Geohash to convert to BBox |
+**`export`**
 
-<a name="BBox"></a>
+#### Parameters:
 
-## BBox : <code>Array.&lt;number&gt;</code>
+| Name   | Type            | Default value | Description               |
+| :----- | :-------------- | :------------ | :------------------------ |
+| `bbox` | [_BBox_](#bbox) | -             | The BBox to convert to WK |
+| `type` | WKType          | 'wkt'         | -                         |
 
-[minLon, minLat, maxLon, maxLat]
+**Returns:** _string_ \| Buffer
 
-**Kind**: global typedef  
-<a name="Coordinate"></a>
+The resulting WK
 
-## Coordinate : <code>Array.&lt;number&gt;</code>
+Defined in: modules/wk.ts:15
 
-[latitude, longitude]
+---
 
-**Kind**: global typedef  
-<a name="CornersBBox"></a>
+### getBBoxSQLSentence
 
-## CornersBBox
+▸ **getBBoxSQLSentence**(`bbox`: [_BBox_](#bbox), `latitudeCol`: _string_, `longitudeCol`: _string_): _string_
 
-**Kind**: global typedef  
-**Properties**
+Gets a SQL sentence to use to filter a BBox
+Checks if a certain column value is inside a BBox
 
-| Name | Type                                   | Description                      |
-| ---- | -------------------------------------- | -------------------------------- |
-| sw   | [<code>Coordinate</code>](#Coordinate) | [lat, lon] for south-west corner |
-| nw   | [<code>Coordinate</code>](#Coordinate) | [lat, lon] for north-west corner |
-| ne   | [<code>Coordinate</code>](#Coordinate) | [lat, lon] for north-east corner |
-| se   | [<code>Coordinate</code>](#Coordinate) | [lat, lon] for south-east corner |
+**`export`**
 
-<a name="GeoJSONPolygon"></a>
+#### Parameters:
 
-## GeoJSONPolygon
+| Name           | Type            | Description               |
+| :------------- | :-------------- | :------------------------ |
+| `bbox`         | [_BBox_](#bbox) | The BBox to use as filter |
+| `latitudeCol`  | _string_        | The latitude column name  |
+| `longitudeCol` | _string_        | The longitude column name |
 
-**Kind**: global typedef  
-**Properties**
+**Returns:** _string_
 
-| Name        | Type                                                | Description          |
-| ----------- | --------------------------------------------------- | -------------------- |
-| type        | <code>&#x27;Polygon&#x27;</code>                    | Type of geometry     |
-| coordinates | <code>Array.&lt;Array.&lt;Coordinate&gt;&gt;</code> | Array of coordinates |
+The SQL sentence
 
-<a name="GeoJSONFeature"></a>
+Defined in: modules/sql.ts:15
 
-## GeoJSONFeature
+---
 
-**Kind**: global typedef  
-**Properties**
+### getGeoJSONBBox
 
-| Name       | Type                                           | Description           |
-| ---------- | ---------------------------------------------- | --------------------- |
-| type       | <code>&#x27;Feature&#x27;</code>               | Type of feature       |
-| geometry   | [<code>GeoJSONPolygon</code>](#GeoJSONPolygon) | Polygon geometry      |
-| properties | <code>object</code>                            | Properties of feature |
+▸ **getGeoJSONBBox**(`geojson`: GeoJSON): [_BBox_](#bbox)
+
+#### Parameters:
+
+| Name      | Type    |
+| :-------- | :------ |
+| `geojson` | GeoJSON |
+
+**Returns:** [_BBox_](#bbox)
+
+Defined in: modules/geojson.ts:25
+
+---
+
+### getGeohashBBox
+
+▸ **getGeohashBBox**(`geohash`: _string_): [_BBox_](#bbox)
+
+#### Parameters:
+
+| Name      | Type     |
+| :-------- | :------- |
+| `geohash` | _string_ |
+
+**Returns:** [_BBox_](#bbox)
+
+Defined in: modules/geohash.ts:4
+
+---
+
+### getWKBBox
+
+▸ **getWKBBox**(`wk`: _string_ \| Buffer): [_BBox_](#bbox)
+
+Gets the BBox of a WK
+
+**`export`**
+
+#### Parameters:
+
+| Name | Type               | Description           |
+| :--- | :----------------- | :-------------------- |
+| `wk` | _string_ \| Buffer | The WK to get BBox of |
+
+**Returns:** [_BBox_](#bbox)
+
+The WK BBox
+
+Defined in: modules/wk.ts:29

@@ -2,19 +2,36 @@
   "name": "bbox-helper-functions",
   "version": "1.1.1",
   "description": "Helper functions to convert BBoxes to multiple formats",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/bbox-helper-functions.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "Alberto Rico",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/alrico88/bbox-helper-functions"
   },
   "devDependencies": {
+    "@types/geojson": "^7946.0.7",
+    "@types/ngeohash": "^0.6.2",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "babel-jest": "^26.6.3",
     "coveralls": "^3.1.0",
-    "eslint": "^5.16.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-jest": "^24.0.2",
-    "geohash-to-geojson": "^1.2.0",
+    "geohash-to-geojson": "^3.1.0",
+    "husky": "^5.1.3",
     "jest": "^26.4.2",
-    "typescript": "^4.1.2"
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typedoc": "^0.20.30",
+    "typedoc-plugin-markdown": "^3.6.0",
+    "typescript": "^4.2.3"
   },
   "keywords": [
     "bbox",
@@ -27,20 +44,27 @@
   "dependencies": {
     "@turf/bbox": "^6.0.1",
     "ngeohash": "^0.6.3",
-    "string-object-formatter": "^1.0.0",
-    "wkt-parser-helper": "^2.0.0"
+    "string-object-formatter": "^2.0.0",
+    "wkt-parser-helper": "^3.0.0"
   },
   "scripts": {
-    "test": "jest",
-    "prepublish": "yarn test && yarn run typings",
-    "typings": "tsc",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "docs": "typedoc src/index.ts --readme",
+    "coveralls": "tsdx test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
   "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 2,
+    "printWidth": 80,
     "semi": true,
     "singleQuote": true,
-    "eslintIntegration": true
+    "trailingComma": "es5"
   }
 }
