@@ -34,6 +34,7 @@ const geohashBBox = getGeohashBBox('ezjmun');
 
 ### Type aliases
 
+- [AccessorFunction](#accessorfunction)
 - [BBox](#bbox)
 
 ### Functions
@@ -43,17 +44,38 @@ const geohashBBox = getGeohashBBox('ezjmun');
 - [BBoxToGeoJSONPolygon](#bboxtogeojsonpolygon)
 - [BBoxToWK](#bboxtowk)
 - [getBBoxSQLSentence](#getbboxsqlsentence)
+- [getDatasetBBox](#getdatasetbbox)
 - [getGeoJSONBBox](#getgeojsonbbox)
 - [getGeohashBBox](#getgeohashbbox)
 - [getWKBBox](#getwkbbox)
 
 ## Type aliases
 
+### AccessorFunction
+
+Ƭ **AccessorFunction**: (`item`: _any_) => _number_
+
+#### Type declaration:
+
+▸ (`item`: _any_): _number_
+
+#### Parameters:
+
+| Name   | Type  |
+| :----- | :---- |
+| `item` | _any_ |
+
+**Returns:** _number_
+
+Defined in: modules/datasets.ts:4
+
+---
+
 ### BBox
 
 Ƭ **BBox**: [*number*, *number*, *number*, *number*]
 
-Defined in: modules/bbox.ts:2
+Defined in: [modules/bbox.ts:2](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/bbox.ts#L2)
 
 ## Functions
 
@@ -75,7 +97,7 @@ Gets corners from a bbox
 
 The corners as [lat, lon] coordinates
 
-Defined in: modules/helpers.ts:84
+Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/helpers.ts#L84)
 
 ---
 
@@ -92,7 +114,7 @@ Defined in: modules/helpers.ts:84
 
 **Returns:** _Feature_<Polygon\>
 
-Defined in: modules/geojson.ts:17
+Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geojson.ts#L17)
 
 ---
 
@@ -108,7 +130,7 @@ Defined in: modules/geojson.ts:17
 
 **Returns:** Polygon
 
-Defined in: modules/geojson.ts:6
+Defined in: [modules/geojson.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geojson.ts#L6)
 
 ---
 
@@ -131,7 +153,7 @@ Converts a BBox to WK
 
 The resulting WK
 
-Defined in: modules/wk.ts:15
+Defined in: [modules/wk.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/wk.ts#L15)
 
 ---
 
@@ -156,7 +178,30 @@ Checks if a certain column value is inside a BBox
 
 The SQL sentence
 
-Defined in: modules/sql.ts:15
+Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/sql.ts#L15)
+
+---
+
+### getDatasetBBox
+
+▸ **getDatasetBBox**(`dataset`: _any_[], `datasetOptions?`: DatasetOptions): [_BBox_](#bbox)
+
+Gets the BBox of an array of objects
+
+**`export`**
+
+#### Parameters:
+
+| Name             | Type           | Description             |
+| :--------------- | :------------- | :---------------------- |
+| `dataset`        | _any_[]        | Dataset to find BBox of |
+| `datasetOptions` | DatasetOptions | -                       |
+
+**Returns:** [_BBox_](#bbox)
+
+The dataset's bbox
+
+Defined in: modules/datasets.ts:52
 
 ---
 
@@ -172,7 +217,7 @@ Defined in: modules/sql.ts:15
 
 **Returns:** [_BBox_](#bbox)
 
-Defined in: modules/geojson.ts:25
+Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geojson.ts#L25)
 
 ---
 
@@ -188,7 +233,7 @@ Defined in: modules/geojson.ts:25
 
 **Returns:** [_BBox_](#bbox)
 
-Defined in: modules/geohash.ts:4
+Defined in: [modules/geohash.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geohash.ts#L4)
 
 ---
 
@@ -210,4 +255,4 @@ Gets the BBox of a WK
 
 The WK BBox
 
-Defined in: modules/wk.ts:29
+Defined in: [modules/wk.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/wk.ts#L29)

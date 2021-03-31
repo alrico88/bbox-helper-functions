@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
+    "@types/lodash": "^4.14.168",
     "@types/ngeohash": "^0.6.2",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
@@ -43,6 +44,8 @@
   ],
   "dependencies": {
     "@turf/bbox": "^6.0.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "ngeohash": "^0.6.3",
     "string-object-formatter": "^2.0.0",
     "wkt-parser-helper": "^3.0.0"

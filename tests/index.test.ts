@@ -1,4 +1,4 @@
-import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox} from '../src';
+import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox} from '../src';
 import {convertToWK} from 'wkt-parser-helper';
 import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
@@ -28,6 +28,30 @@ const asFeature: Feature = {
     test: 'testValue',
   },
 };
+
+interface DatasetItem {
+  latitude: number;
+  longitude: number;
+}
+
+const dataset: DatasetItem[] = [
+  {
+    latitude: -3,
+    longitude: 3,
+  },
+  {
+    latitude: -5,
+    longitude: 3,
+  },
+  {
+    latitude: 1,
+    longitude: 2,
+  },
+  {
+    latitude: 2,
+    longitude: 19,
+  },
+];
 
 describe('Testing BBoxHelper methods', () => {
   test('Corners should be an object with sw, nw, ne, se properties', () => {
@@ -89,5 +113,19 @@ describe('Testing BBoxHelper methods', () => {
     const featureBBox = turfBbox(geohashToPolygonFeature(geohash));
 
     expect(geohashBBox).toStrictEqual(featureBBox);
+  });
+
+  test('The BBox of a dataset should be the same as the domains of latitude and longitude mapped arrays', () => {
+    expect(getDatasetBBox(dataset, {
+      latitudeProp: 'latitude',
+      longitudeProp: 'longitude',
+    })).toStrictEqual([2, -5, 19, 2]);
+  });
+
+  test('The BBox of a dataset should be the same as the domains of latitude and longitude mapped arrays, using accesor functions', () => {
+    expect(getDatasetBBox(dataset, {
+      latitudeAccessor: (item: DatasetItem) => item.latitude,
+      longitudeAccessor: (item: DatasetItem) => item.longitude,
+    })).toStrictEqual([2, -5, 19, 2]);
   });
 });

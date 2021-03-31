@@ -4,3 +4,4 @@ export {BBoxToGeoJSONFeature, BBoxToGeoJSONPolygon, getGeoJSONBBox} from './modu
 export {BBoxToCorners} from './modules/helpers';
 export {getBBoxSQLSentence} from './modules/sql';
 export {BBoxToWK, getWKBBox} from './modules/wk';
+export {getDatasetBBox, AccessorFunction} from './modules/datasets';
