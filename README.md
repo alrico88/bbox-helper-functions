@@ -32,6 +32,10 @@ const geohashBBox = getGeohashBBox('ezjmun');
 
 ## Table of contents
 
+### Interfaces
+
+- [GeoPoint](interfaces/geopoint.md)
+
 ### Type aliases
 
 - [AccessorFunction](#accessorfunction)
@@ -48,6 +52,8 @@ const geohashBBox = getGeohashBBox('ezjmun');
 - [getGeoJSONBBox](#getgeojsonbbox)
 - [getGeohashBBox](#getgeohashbbox)
 - [getWKBBox](#getwkbbox)
+- [isBBoxInsideBBox](#isbboxinsidebbox)
+- [isPointInsideBBox](#ispointinsidebbox)
 
 ## Type aliases
 
@@ -67,7 +73,7 @@ const geohashBBox = getGeohashBBox('ezjmun');
 
 **Returns:** _number_
 
-Defined in: modules/datasets.ts:4
+Defined in: [modules/datasets.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/datasets.ts#L4)
 
 ---
 
@@ -75,7 +81,7 @@ Defined in: modules/datasets.ts:4
 
 Ƭ **BBox**: [*number*, *number*, *number*, *number*]
 
-Defined in: [modules/bbox.ts:2](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/bbox.ts#L2)
+Defined in: [modules/bbox.ts:2](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/bbox.ts#L2)
 
 ## Functions
 
@@ -97,7 +103,7 @@ Gets corners from a bbox
 
 The corners as [lat, lon] coordinates
 
-Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/helpers.ts#L84)
+Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/helpers.ts#L84)
 
 ---
 
@@ -114,7 +120,7 @@ Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-func
 
 **Returns:** _Feature_<Polygon\>
 
-Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geojson.ts#L17)
+Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/geojson.ts#L17)
 
 ---
 
@@ -130,7 +136,7 @@ Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-func
 
 **Returns:** Polygon
 
-Defined in: [modules/geojson.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geojson.ts#L6)
+Defined in: [modules/geojson.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/geojson.ts#L6)
 
 ---
 
@@ -153,7 +159,7 @@ Converts a BBox to WK
 
 The resulting WK
 
-Defined in: [modules/wk.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/wk.ts#L15)
+Defined in: [modules/wk.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/wk.ts#L15)
 
 ---
 
@@ -178,7 +184,7 @@ Checks if a certain column value is inside a BBox
 
 The SQL sentence
 
-Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/sql.ts#L15)
+Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/sql.ts#L15)
 
 ---
 
@@ -201,7 +207,7 @@ Gets the BBox of an array of objects
 
 The dataset's bbox
 
-Defined in: modules/datasets.ts:52
+Defined in: [modules/datasets.ts:52](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/datasets.ts#L52)
 
 ---
 
@@ -217,7 +223,7 @@ Defined in: modules/datasets.ts:52
 
 **Returns:** [_BBox_](#bbox)
 
-Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geojson.ts#L25)
+Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/geojson.ts#L25)
 
 ---
 
@@ -233,7 +239,7 @@ Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-func
 
 **Returns:** [_BBox_](#bbox)
 
-Defined in: [modules/geohash.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/geohash.ts#L4)
+Defined in: [modules/geohash.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/geohash.ts#L4)
 
 ---
 
@@ -255,4 +261,50 @@ Gets the BBox of a WK
 
 The WK BBox
 
-Defined in: [modules/wk.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/bf8fcfa/src/modules/wk.ts#L29)
+Defined in: [modules/wk.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/wk.ts#L29)
+
+---
+
+### isBBoxInsideBBox
+
+▸ **isBBoxInsideBBox**(`bboxToCheck`: [_BBox_](#bbox), `bboxContainer`: [_BBox_](#bbox)): _boolean_
+
+Checks if a BBox is completely contained in another BBox
+
+**`export`**
+
+#### Parameters:
+
+| Name            | Type            | Description                      |
+| :-------------- | :-------------- | :------------------------------- |
+| `bboxToCheck`   | [_BBox_](#bbox) | The BBox to check if it's inside |
+| `bboxContainer` | [_BBox_](#bbox) | The BBox container               |
+
+**Returns:** _boolean_
+
+Whether the BBox is inside the other BBox
+
+Defined in: [modules/bbox.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/bbox.ts#L17)
+
+---
+
+### isPointInsideBBox
+
+▸ **isPointInsideBBox**(`point`: [_GeoPoint_](interfaces/geopoint.md), `bbox`: [_BBox_](#bbox)): _boolean_
+
+Checks if a point is inside a BBox
+
+**`export`**
+
+#### Parameters:
+
+| Name    | Type                                 | Description        |
+| :------ | :----------------------------------- | :----------------- |
+| `point` | [_GeoPoint_](interfaces/geopoint.md) | The point to check |
+| `bbox`  | [_BBox_](#bbox)                      | The BBox to check  |
+
+**Returns:** _boolean_
+
+Whether the point is inside the BBox
+
+Defined in: [modules/bbox.ts:37](https://github.com/alrico88/bbox-helper-functions/blob/1d482ca/src/modules/bbox.ts#L37)

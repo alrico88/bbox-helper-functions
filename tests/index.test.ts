@@ -1,4 +1,5 @@
-import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox} from '../src';
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox} from '../src';
 import {convertToWK} from 'wkt-parser-helper';
 import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
@@ -127,5 +128,31 @@ describe('Testing BBoxHelper methods', () => {
       latitudeAccessor: (item: DatasetItem) => item.latitude,
       longitudeAccessor: (item: DatasetItem) => item.longitude,
     })).toStrictEqual([2, -5, 19, 2]);
+  });
+
+  test('A BBox contained in another one should return true for isBBoxInsideBBox method', () => {
+    expect(isBBoxInsideBBox([-3.933105, 39.783213, -2.823486, 40.538852], [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(true);
+  });
+
+  test('A bigger BBox should not be contained in smaller BBox', () => {
+    expect(isBBoxInsideBBox([-4.570313, 39.376772, -2.27417, 40.930115], [-3.933105, 39.783213, -2.823486, 40.538852])).toBe(false);
+  });
+
+  test('Two intersecting BBoxes should not be contained one another', () => {
+    expect(isBBoxInsideBBox([-4.570313, 39.376772, -2.27417, 40.930115], [-3.054199, 40.229218, -1.230469, 41.302571])).toBe(false);
+  });
+
+  test('A point inside a BBox should return true for isPointInsideBBox method', () => {
+    expect(isPointInsideBBox({
+      latitude: 40.1,
+      longitude: -4,
+    }, [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(true);
+  });
+
+  test('A point outside a BBox should return false for isPointInsideBBox method', () => {
+    expect(isPointInsideBBox({
+      latitude: 5,
+      longitude: -4,
+    }, [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(false);
   });
 });
