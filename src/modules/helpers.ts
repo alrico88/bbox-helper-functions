@@ -84,3 +84,16 @@ class CornersFromBBox {
 export function BBoxToCorners(bbox: BBox): Corners {
   return new CornersFromBBox(bbox).toPlain();
 }
+
+/**
+ * Checks if number is between a min and max
+ *
+ * @export
+ * @param {number} toCheck
+ * @param {number} min
+ * @param {number} max
+ * @return {boolean}
+ */
+export function isBetween(toCheck: number, min: number, max: number): boolean {
+  return toCheck >= min && toCheck <= max;
+}

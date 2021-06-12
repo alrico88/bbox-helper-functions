@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox} from '../src';
+import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox, getGeohashesInBBox} from '../src';
 import {convertToWK} from 'wkt-parser-helper';
 import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
@@ -154,5 +154,29 @@ describe('Testing BBoxHelper methods', () => {
       latitude: 5,
       longitude: -4,
     }, [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(false);
+  });
+
+  test('The geohashes inside should return no duplicates', () => {
+    const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8);
+
+    const counter: Record<string, number> = {};
+
+    const count = geohashesInside.reduce((agg, geohash) => {
+      if (agg[geohash]) {
+        agg[geohash]++;
+      } else {
+        agg[geohash] = 1;
+      }
+
+      return agg;
+    }, counter);
+
+    expect(Math.max(...Object.values(count))).toBe(1);
+  });
+
+  test('The geohashes inside a big enough area should be more than 0', () => {
+    const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8);
+
+    expect(geohashesInside.length).toBeGreaterThanOrEqual(1);
   });
 });
