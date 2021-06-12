@@ -72,5 +72,5 @@ export function getGeohashesInBBox(bbox: BBox, precision: number): string[] {
     checked.add(ghash);
   }
 
-  return inside;
+  return uniq(inside);
 }

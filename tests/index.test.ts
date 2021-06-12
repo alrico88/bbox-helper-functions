@@ -157,7 +157,7 @@ describe('Testing BBoxHelper methods', () => {
   });
 
   test('The geohashes inside should return no duplicates', () => {
-    const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8);
+    const geohashesInside = getGeohashesInBBox([-47.94433593750001, 22.187404991398786, 37.17773437500001, 59.77852198502987], 2);
 
     const counter: Record<string, number> = {};
 
