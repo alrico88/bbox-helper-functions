@@ -1,4 +1,3 @@
-
 export type BBox = [number, number, number, number];
 
 export interface GeoPoint {
