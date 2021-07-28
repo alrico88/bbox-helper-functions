@@ -1,6 +1,6 @@
 {
   "name": "bbox-helper-functions",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Helper functions to convert BBoxes to multiple formats",
   "main": "dist/index.js",
   "module": "dist/bbox-helper-functions.esm.js",
