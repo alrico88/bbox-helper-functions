@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox, getGeohashesInBBox} from '../src';
+import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox, getGeohashesInBBox, getBBoxPostGISSentence} from '../src';
 import {convertToWK} from 'wkt-parser-helper';
 import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
@@ -54,16 +54,18 @@ const dataset: DatasetItem[] = [
   },
 ];
 
+const bboxCorners = {
+  sw: [minLat, minLon],
+  nw: [maxLat, minLon],
+  ne: [maxLat, maxLon],
+  se: [minLat, maxLon],
+};
+
 describe('Testing BBoxHelper methods', () => {
   test('Corners should be an object with sw, nw, ne, se properties', () => {
     const asCorners = BBoxToCorners(testBBox);
 
-    expect(asCorners).toStrictEqual({
-      sw: [minLat, minLon],
-      nw: [maxLat, minLon],
-      ne: [maxLat, maxLon],
-      se: [minLat, maxLon],
-    });
+    expect(asCorners).toStrictEqual(bboxCorners);
   });
 
   test('Converting BBox to WKT should return the same representation as a polygon with 5 coordinates, sw, nw, ne, se, and sw again', () => {
@@ -178,5 +180,12 @@ describe('Testing BBoxHelper methods', () => {
     const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8);
 
     expect(geohashesInside.length).toBeGreaterThanOrEqual(1);
+  });
+
+  test('Test PostGIS methods', () => {
+    const sentence = getBBoxPostGISSentence(testBBox);
+    const {sw, se, ne, nw} = bboxCorners;
+
+    expect(sentence).toBe(`ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`)
   });
 });

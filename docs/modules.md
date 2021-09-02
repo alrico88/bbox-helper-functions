@@ -19,6 +19,7 @@
 - [BBoxToGeoJSONFeature](modules.md#bboxtogeojsonfeature)
 - [BBoxToGeoJSONPolygon](modules.md#bboxtogeojsonpolygon)
 - [BBoxToWK](modules.md#bboxtowk)
+- [getBBoxPostGISSentence](modules.md#getbboxpostgissentence)
 - [getBBoxSQLSentence](modules.md#getbboxsqlsentence)
 - [getDatasetBBox](modules.md#getdatasetbbox)
 - [getGeoJSONBBox](modules.md#getgeojsonbbox)
@@ -46,7 +47,7 @@ Name | Type |
 
 **Returns:** *number*
 
-Defined in: [modules/datasets.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/datasets.ts#L4)
+Defined in: [modules/datasets.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/datasets.ts#L4)
 
 ___
 
@@ -54,7 +55,7 @@ ___
 
 Ƭ **BBox**: [*number*, *number*, *number*, *number*]
 
-Defined in: [modules/bbox.ts:2](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/bbox.ts#L2)
+Defined in: [modules/bbox.ts:1](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/bbox.ts#L1)
 
 ## Functions
 
@@ -76,7 +77,7 @@ Name | Type | Description |
 
 The corners as [lat, lon] coordinates
 
-Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/helpers.ts#L84)
+Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/helpers.ts#L84)
 
 ___
 
@@ -93,7 +94,7 @@ Name | Type |
 
 **Returns:** *Feature*<Polygon\>
 
-Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/geojson.ts#L17)
+Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/geojson.ts#L17)
 
 ___
 
@@ -109,7 +110,7 @@ Name | Type |
 
 **Returns:** Polygon
 
-Defined in: [modules/geojson.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/geojson.ts#L6)
+Defined in: [modules/geojson.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/geojson.ts#L6)
 
 ___
 
@@ -132,7 +133,27 @@ Name | Type | Default value | Description |
 
 The resulting WK
 
-Defined in: [modules/wk.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/wk.ts#L15)
+Defined in: [modules/wk.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/wk.ts#L15)
+
+___
+
+### getBBoxPostGISSentence
+
+▸ **getBBoxPostGISSentence**(`bbox`: [*BBox*](modules.md#bbox)): *string*
+
+Creates a PostGIS bounding box expression from a BBox
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`bbox` | [*BBox*](modules.md#bbox) | The BBox to convert to a polygon   |
+
+**Returns:** *string*
+
+The SQL sentences
+
+Defined in: [modules/sql.ts:40](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/sql.ts#L40)
 
 ___
 
@@ -157,7 +178,7 @@ Name | Type | Description |
 
 The SQL sentence
 
-Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/sql.ts#L15)
+Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/sql.ts#L15)
 
 ___
 
@@ -180,7 +201,7 @@ Name | Type | Description |
 
 The dataset's bbox
 
-Defined in: [modules/datasets.ts:52](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/datasets.ts#L52)
+Defined in: [modules/datasets.ts:52](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/datasets.ts#L52)
 
 ___
 
@@ -196,7 +217,7 @@ Name | Type |
 
 **Returns:** [*BBox*](modules.md#bbox)
 
-Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/geojson.ts#L25)
+Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/geojson.ts#L25)
 
 ___
 
@@ -218,7 +239,7 @@ Name | Type | Description |
 
 The BBox of the geohash
 
-Defined in: [modules/geohash.ts:14](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/geohash.ts#L14)
+Defined in: [modules/geohash.ts:14](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/geohash.ts#L14)
 
 ___
 
@@ -241,7 +262,7 @@ Name | Type | Description |
 
 Array of geohash strings
 
-Defined in: [modules/geohash.ts:28](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/geohash.ts#L28)
+Defined in: [modules/geohash.ts:28](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/geohash.ts#L28)
 
 ___
 
@@ -263,7 +284,7 @@ Name | Type | Description |
 
 The WK BBox
 
-Defined in: [modules/wk.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/wk.ts#L29)
+Defined in: [modules/wk.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/wk.ts#L29)
 
 ___
 
@@ -286,7 +307,7 @@ Name | Type | Description |
 
 Whether the BBox is inside the other BBox
 
-Defined in: [modules/bbox.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/bbox.ts#L17)
+Defined in: [modules/bbox.ts:16](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/bbox.ts#L16)
 
 ___
 
@@ -309,4 +330,4 @@ Name | Type | Description |
 
 Whether the point is inside the BBox
 
-Defined in: [modules/bbox.ts:37](https://github.com/alrico88/bbox-helper-functions/blob/b8ecf76/src/modules/bbox.ts#L37)
+Defined in: [modules/bbox.ts:36](https://github.com/alrico88/bbox-helper-functions/blob/0cf0f5e/src/modules/bbox.ts#L36)
