@@ -32,7 +32,7 @@ export function checkBBox(bbox: BBox | number[]): void {
 
 type Coord = [number, number];
 
-interface Corners {
+export interface Corners {
   sw: Coord;
   nw: Coord;
   ne: Coord;
@@ -83,6 +83,25 @@ class CornersFromBBox {
  */
 export function BBoxToCorners(bbox: BBox): Corners {
   return new CornersFromBBox(bbox).toPlain();
+}
+
+/**
+ * Returns corners in a lon, lat order
+ *
+ * @param {Corners} corners
+ * @return {Corners}
+ */
+export function enforceLonLatCorners(corners: Corners): Corners {
+  function reverseClone(coords: Coord): Coord {
+    return [...coords].reverse() as Coord;
+  }
+
+  return {
+    sw: reverseClone(corners.sw),
+    se: reverseClone(corners.se),
+    nw: reverseClone(corners.nw),
+    ne: reverseClone(corners.ne),
+  };
 }
 
 /**

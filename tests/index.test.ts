@@ -4,6 +4,7 @@ import {convertToWK} from 'wkt-parser-helper';
 import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
 import {Feature, Polygon} from 'geojson';
+import {enforceLonLatCorners, Corners} from '../src/modules/helpers';
 
 const testBBox: BBox = [-3.708011, 40.418038, -3.687877, 40.428754];
 
@@ -54,7 +55,7 @@ const dataset: DatasetItem[] = [
   },
 ];
 
-const bboxCorners = {
+const bboxCorners: Corners = {
   sw: [minLat, minLon],
   nw: [maxLat, minLon],
   ne: [maxLat, maxLon],
@@ -184,8 +185,8 @@ describe('Testing BBoxHelper methods', () => {
 
   test('Test PostGIS methods', () => {
     const sentence = getBBoxPostGISSentence(testBBox);
-    const {sw, se, ne, nw} = bboxCorners;
+    const {sw, se, ne, nw} = enforceLonLatCorners(bboxCorners);
 
-    expect(sentence).toBe(`ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`)
+    expect(sentence).toBe(`ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`);
   });
 });
