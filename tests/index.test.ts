@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {BBoxToCorners, BBoxToWK, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox, getGeohashesInBBox, getBBoxPostGISSentence} from '../src';
+import {BBoxToCorners, BBoxToWKT, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKTBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox, getGeohashesInBBox, getBBoxPostGISSentence} from '../src';
 import {convertToWK} from 'wkt-parser-helper';
 import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
@@ -70,7 +70,7 @@ describe('Testing BBoxHelper methods', () => {
   });
 
   test('Converting BBox to WKT should return the same representation as a polygon with 5 coordinates, sw, nw, ne, se, and sw again', () => {
-    const asCorners = BBoxToWK(testBBox, 'wkt');
+    const asCorners = BBoxToWKT(testBBox);
 
     expect(asCorners).toStrictEqual(convertToWK(asPolygon));
   });
@@ -95,7 +95,7 @@ describe('Testing BBoxHelper methods', () => {
 
   test('The BBox representation of a WKT should be equal to the representation of the BBox of its GeoJSON representation', () => {
     const asWkt = convertToWK(asPolygon);
-    const wktBBox = getWKBBox(asWkt);
+    const wktBBox = getWKTBBox(asWkt);
     const geojsonBBox = getGeoJSONBBox(asPolygon);
 
     expect(wktBBox).toStrictEqual(geojsonBBox);

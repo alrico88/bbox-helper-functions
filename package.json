@@ -2,9 +2,10 @@
   "name": "bbox-helper-functions",
   "version": "2.4.1",
   "description": "Helper functions to convert BBoxes to multiple formats",
-  "main": "dist/index.js",
-  "module": "dist/bbox-helper-functions.esm.js",
-  "typings": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.umd.js",
+  "typings": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -12,25 +13,29 @@
   "author": "Alberto Rico",
   "license": "MIT",
   "repository": {
+    "type": "git",
     "url": "https://github.com/alrico88/bbox-helper-functions"
   },
   "sideEffects": false,
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
+    "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.168",
     "@types/ngeohash": "^0.6.2",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
-    "babel-jest": "^26.6.3",
     "coveralls": "^3.1.0",
     "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jest": "^24.0.2",
     "geohash-to-geojson": "^3.1.0",
-    "husky": "^5.1.3",
-    "jest": "^26.4.2",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.1.0",
+    "jest": "^27.3.1",
+    "microbundle": "^0.14.1",
+    "ts-jest": "^27.0.7",
+    "tslib": "^2.3.1",
     "typedoc": "^0.20.30",
     "typedoc-plugin-markdown": "^3.6.0",
     "typescript": "^4.2.3"
@@ -44,32 +49,20 @@
     "wkt"
   ],
   "dependencies": {
+    "@sindresorhus/is": "^4.2.0",
     "@turf/bbox": "^6.0.1",
-    "geohashes-between": "^1.0.0",
+    "geohashes-between": "^2.0.3",
     "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
     "ngeohash": "^0.6.3",
     "string-object-formatter": "^2.0.0",
-    "wkt-parser-helper": "^3.0.0"
+    "wkt-parser-helper": "^4.0.1"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "docs": "typedoc src/index.ts --readme",
-    "coveralls": "tsdx test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info",
+    "docs": "typedoc src/index.ts --readme README.md --gitRevision master",
+    "prepublish": "pnpm run build"
   }
 }

@@ -6,6 +6,7 @@
 
 ### Interfaces
 
+- [DatasetOptions](interfaces/datasetoptions.md)
 - [GeoPoint](interfaces/geopoint.md)
 
 ### Type aliases
@@ -18,14 +19,14 @@
 - [BBoxToCorners](modules.md#bboxtocorners)
 - [BBoxToGeoJSONFeature](modules.md#bboxtogeojsonfeature)
 - [BBoxToGeoJSONPolygon](modules.md#bboxtogeojsonpolygon)
-- [BBoxToWK](modules.md#bboxtowk)
+- [BBoxToWKT](modules.md#bboxtowkt)
 - [getBBoxPostGISSentence](modules.md#getbboxpostgissentence)
 - [getBBoxSQLSentence](modules.md#getbboxsqlsentence)
 - [getDatasetBBox](modules.md#getdatasetbbox)
 - [getGeoJSONBBox](modules.md#getgeojsonbbox)
 - [getGeohashBBox](modules.md#getgeohashbbox)
 - [getGeohashesInBBox](modules.md#getgeohashesinbbox)
-- [getWKBBox](modules.md#getwkbbox)
+- [getWKTBBox](modules.md#getwktbbox)
 - [isBBoxInsideBBox](modules.md#isbboxinsidebbox)
 - [isPointInsideBBox](modules.md#ispointinsidebbox)
 
@@ -47,7 +48,7 @@ Name | Type |
 
 **Returns:** *number*
 
-Defined in: [modules/datasets.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/datasets.ts#L4)
+Defined in: models/DatasetOptions.ts:1
 
 ___
 
@@ -55,7 +56,7 @@ ___
 
 Ƭ **BBox**: [*number*, *number*, *number*, *number*]
 
-Defined in: [modules/bbox.ts:1](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/bbox.ts#L1)
+Defined in: [modules/bbox.ts:1](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L1)
 
 ## Functions
 
@@ -77,7 +78,7 @@ Name | Type | Description |
 
 The corners as [lat, lon] coordinates
 
-Defined in: [modules/helpers.ts:84](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/helpers.ts#L84)
+Defined in: [modules/helpers.ts:87](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/helpers.ts#L87)
 
 ___
 
@@ -94,7 +95,7 @@ Name | Type |
 
 **Returns:** *Feature*<Polygon\>
 
-Defined in: [modules/geojson.ts:17](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/geojson.ts#L17)
+Defined in: [modules/geojson.ts:21](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geojson.ts#L21)
 
 ___
 
@@ -110,30 +111,29 @@ Name | Type |
 
 **Returns:** Polygon
 
-Defined in: [modules/geojson.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/geojson.ts#L6)
+Defined in: [modules/geojson.ts:8](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geojson.ts#L8)
 
 ___
 
-### BBoxToWK
+### BBoxToWKT
 
-▸ **BBoxToWK**(`bbox`: [*BBox*](modules.md#bbox), `type?`: WKType): *string* \| Buffer
+▸ **BBoxToWKT**(`bbox`: [*BBox*](modules.md#bbox)): *string*
 
-Converts a BBox to WK
+Converts a BBox to WKT
 
 **`export`** 
 
 #### Parameters:
 
-Name | Type | Default value | Description |
-:------ | :------ | :------ | :------ |
-`bbox` | [*BBox*](modules.md#bbox) | - | The BBox to convert to WK   |
-`type` | WKType | 'wkt' | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`bbox` | [*BBox*](modules.md#bbox) | The BBox to convert to WKT   |
 
-**Returns:** *string* \| Buffer
+**Returns:** *string*
 
-The resulting WK
+The resulting WKT
 
-Defined in: [modules/wk.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/wk.ts#L15)
+Defined in: [modules/wk.ts:14](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/wk.ts#L14)
 
 ___
 
@@ -153,7 +153,7 @@ Name | Type | Description |
 
 The SQL sentences
 
-Defined in: [modules/sql.ts:40](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/sql.ts#L40)
+Defined in: [modules/sql.ts:40](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/sql.ts#L40)
 
 ___
 
@@ -178,13 +178,13 @@ Name | Type | Description |
 
 The SQL sentence
 
-Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/sql.ts#L15)
+Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/sql.ts#L15)
 
 ___
 
 ### getDatasetBBox
 
-▸ **getDatasetBBox**(`dataset`: *any*[], `datasetOptions?`: DatasetOptions): [*BBox*](modules.md#bbox)
+▸ **getDatasetBBox**(`dataset`: *any*[], `datasetOptions?`: [*DatasetOptions*](interfaces/datasetoptions.md)): [*BBox*](modules.md#bbox)
 
 Gets the BBox of an array of objects
 
@@ -195,13 +195,13 @@ Gets the BBox of an array of objects
 Name | Type | Description |
 :------ | :------ | :------ |
 `dataset` | *any*[] | Dataset to find BBox of   |
-`datasetOptions` | DatasetOptions | - |
+`datasetOptions` | [*DatasetOptions*](interfaces/datasetoptions.md) | - |
 
 **Returns:** [*BBox*](modules.md#bbox)
 
 The dataset's bbox
 
-Defined in: [modules/datasets.ts:52](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/datasets.ts#L52)
+Defined in: [modules/datasets.ts:26](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/datasets.ts#L26)
 
 ___
 
@@ -217,7 +217,7 @@ Name | Type |
 
 **Returns:** [*BBox*](modules.md#bbox)
 
-Defined in: [modules/geojson.ts:25](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/geojson.ts#L25)
+Defined in: [modules/geojson.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geojson.ts#L29)
 
 ___
 
@@ -239,7 +239,7 @@ Name | Type | Description |
 
 The BBox of the geohash
 
-Defined in: [modules/geohash.ts:14](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/geohash.ts#L14)
+Defined in: [modules/geohash.ts:16](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geohash.ts#L16)
 
 ___
 
@@ -262,15 +262,15 @@ Name | Type | Description |
 
 Array of geohash strings
 
-Defined in: [modules/geohash.ts:28](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/geohash.ts#L28)
+Defined in: [modules/geohash.ts:30](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geohash.ts#L30)
 
 ___
 
-### getWKBBox
+### getWKTBBox
 
-▸ **getWKBBox**(`wk`: *string* \| Buffer): [*BBox*](modules.md#bbox)
+▸ **getWKTBBox**(`wkt`: *string*): [*BBox*](modules.md#bbox)
 
-Gets the BBox of a WK
+Gets the BBox of a WKT
 
 **`export`** 
 
@@ -278,13 +278,13 @@ Gets the BBox of a WK
 
 Name | Type | Description |
 :------ | :------ | :------ |
-`wk` | *string* \| Buffer | The WK to get BBox of   |
+`wkt` | *string* | The WKT to get BBox of   |
 
 **Returns:** [*BBox*](modules.md#bbox)
 
-The WK BBox
+The WKT BBox
 
-Defined in: [modules/wk.ts:29](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/wk.ts#L29)
+Defined in: [modules/wk.ts:28](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/wk.ts#L28)
 
 ___
 
@@ -307,7 +307,7 @@ Name | Type | Description |
 
 Whether the BBox is inside the other BBox
 
-Defined in: [modules/bbox.ts:16](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/bbox.ts#L16)
+Defined in: [modules/bbox.ts:16](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L16)
 
 ___
 
@@ -330,4 +330,4 @@ Name | Type | Description |
 
 Whether the point is inside the BBox
 
-Defined in: [modules/bbox.ts:36](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/bbox.ts#L36)
+Defined in: [modules/bbox.ts:36](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L36)

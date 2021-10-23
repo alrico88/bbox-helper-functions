@@ -1,31 +1,30 @@
-import {BBoxToGeoJSONPolygon} from './geojson';
-import {checkBBox} from './helpers';
-import {convertToWK, parseFromWK, WKType} from 'wkt-parser-helper';
-import {BBox} from './bbox';
+import { convertToWK, parseFromWK } from 'wkt-parser-helper';
 import turfBBox from '@turf/bbox';
+import { BBoxToGeoJSONPolygon } from './geojson';
+import { checkBBox } from './helpers';
+import { BBox } from './bbox';
 
 /**
- * Converts a BBox to WK
+ * Converts a BBox to WKT
  *
  * @export
- * @param  {BBox} bbox The BBox to convert to WK
- * @param  {WKType} [type='wkt'] The type of WK
- * @return {(string | Buffer)} The resulting WK
+ * @param  {BBox} bbox The BBox to convert to WKT
+ * @return {string} The resulting WKT
  */
-export function BBoxToWK(bbox: BBox, type: WKType = 'wkt'): string | Buffer {
+export function BBoxToWKT(bbox: BBox): string {
   checkBBox(bbox);
 
   const geoJSON = BBoxToGeoJSONPolygon(bbox);
 
-  return convertToWK(geoJSON, type);
+  return convertToWK(geoJSON);
 }
 
 /**
- * Gets the BBox of a WK
+ * Gets the BBox of a WKT
  * @export
- * @param  {(string | Buffer)} wk The WK to get BBox of
- * @return {BBox} The WK BBox
+ * @param  {string} wkt The WKT to get BBox of
+ * @return {BBox} The WKT BBox
  */
-export function getWKBBox(wk: string | Buffer): BBox {
-  return turfBBox(parseFromWK(wk)) as BBox;
+export function getWKTBBox(wkt: string): BBox {
+  return turfBBox(parseFromWK(wkt)) as BBox;
 }

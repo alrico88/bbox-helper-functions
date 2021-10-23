@@ -1,12 +1,16 @@
-import {Feature, GeoJsonProperties, Polygon, GeoJSON} from 'geojson';
-import {BBox} from './bbox';
-import {BBoxToCorners, checkBBox, latLonToLonLat} from './helpers';
+import {
+  Feature, GeoJsonProperties, Polygon, GeoJSON,
+} from 'geojson';
 import turfBBox from '@turf/bbox';
+import { BBox } from './bbox';
+import { BBoxToCorners, checkBBox, latLonToLonLat } from './helpers';
 
 export function BBoxToGeoJSONPolygon(bbox: BBox): Polygon {
   checkBBox(bbox);
 
-  const {sw, se, nw, ne} = BBoxToCorners(bbox);
+  const {
+    sw, se, nw, ne,
+  } = BBoxToCorners(bbox);
 
   return {
     type: 'Polygon',
