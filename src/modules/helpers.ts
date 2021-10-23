@@ -1,4 +1,4 @@
-import {BBox} from './bbox';
+import { BBox } from './bbox';
 
 /**
  * Converts lat lon array to lon lat array
@@ -41,8 +41,11 @@ export interface Corners {
 
 class CornersFromBBox {
   public sw: Coord;
+
   public nw: Coord;
+
   public ne: Coord;
+
   public se: Coord;
 
   /**

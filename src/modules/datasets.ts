@@ -1,43 +1,17 @@
-import {BBox} from './bbox';
-import {get} from 'lodash';
-
-export type AccessorFunction = (item: any) => number;
-
-interface DatasetOptions {
-  latitudeProp?: string;
-  longitudeProp?: string;
-  latitudeAccessor?: AccessorFunction;
-  longitudeAccessor?: AccessorFunction;
-}
-
-interface BBoxAsObject {
-  minLat: number;
-  minLon: number;
-  maxLat: number;
-  maxLon: number;
-}
+/* eslint-disable max-len */
+import { Accessors } from '../models/Accessors';
+import { BBoxAsObject } from '../models/BBoxAsObject';
+import { DatasetOptions } from '../models/DatasetOptions';
+import { BBox } from './bbox';
 
 class DefaultDatasetOptions implements DatasetOptions {
   public latitudeProp: string;
+
   public longitudeProp: string;
 
   constructor() {
     this.latitudeProp = 'latitude';
     this.longitudeProp = 'longitude';
-  }
-}
-
-class Accessors {
-  public longitude: (item: any) => number;
-  public latitude: (item: any) => number;
-
-  constructor(options: DatasetOptions) {
-    this.latitude = options.latitudeAccessor != null
-      ? options.latitudeAccessor
-      : (d: any): number => get(d, options.latitudeProp != null ? options.latitudeProp : 'latitude');
-    this.longitude = options.longitudeAccessor != null
-      ? options.longitudeAccessor
-      : (d: any): number => get(d, options.longitudeProp != null ? options.longitudeProp : 'longitude');
   }
 }
 
@@ -49,7 +23,10 @@ class Accessors {
  * @param {DatasetOptions} [datasetOptions=new DefaultDatasetOptions()] Options for defining latitude and longitude props or accessors
  * @return {BBox} The dataset's bbox
  */
-export function getDatasetBBox(dataset: any[], datasetOptions: DatasetOptions = new DefaultDatasetOptions()): BBox {
+export function getDatasetBBox(
+  dataset: any[],
+  datasetOptions: DatasetOptions = new DefaultDatasetOptions(),
+): BBox {
   const accessors = new Accessors(datasetOptions);
 
   if (dataset.length > 0) {
@@ -64,7 +41,9 @@ export function getDatasetBBox(dataset: any[], datasetOptions: DatasetOptions = 
       maxLon: initLon,
     };
 
-    const {minLat, minLon, maxLat, maxLon} = dataset.reduce((agg: BBoxAsObject, item) => {
+    const {
+      minLat, minLon, maxLat, maxLon,
+    } = dataset.reduce((agg: BBoxAsObject, item) => {
       const latitude = accessors.latitude(item);
       const longitude = accessors.longitude(item);
 
@@ -88,9 +67,8 @@ export function getDatasetBBox(dataset: any[], datasetOptions: DatasetOptions = 
     }, initializer);
 
     return [minLon, minLat, maxLon, maxLat];
-  } else {
-    const defaultCoord = 180;
-
-    return [-defaultCoord, -defaultCoord, defaultCoord, defaultCoord];
   }
+  const defaultCoord = 180;
+
+  return [-defaultCoord, -defaultCoord, defaultCoord, defaultCoord];
 }

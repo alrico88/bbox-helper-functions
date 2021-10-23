@@ -34,7 +34,7 @@ export function isBBoxInsideBBox(bboxToCheck: BBox, bboxContainer: BBox): boolea
  * @return {boolean} Whether the point is inside the BBox
  */
 export function isPointInsideBBox(point: GeoPoint, bbox: BBox): boolean {
-  const {latitude, longitude} = point;
+  const { latitude, longitude } = point;
   const [minLon, minLat, maxLon, maxLat] = bbox;
   const isLatitudeOK = latitude >= minLat && latitude <= maxLat;
   const isLongitudeOK = longitude >= minLon && longitude <= maxLon;

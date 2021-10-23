@@ -1,8 +1,10 @@
-import {BBox} from './bbox';
-import {decode_bbox, decode, neighbors, encode} from 'ngeohash';
-import {getGeohashesBetween} from 'geohashes-between';
-import {isBetween} from './helpers';
-import {uniq} from 'lodash';
+import {
+  decode_bbox, decode, neighbors, encode,
+} from 'ngeohash';
+import { getGeohashesBetweenTwoGeohashes } from 'geohashes-between';
+import uniq from 'lodash/uniq';
+import { isBetween } from './helpers';
+import { BBox } from './bbox';
 
 /**
  * Gets the BBox of a given geohash
@@ -29,7 +31,7 @@ export function getGeohashesInBBox(bbox: BBox, precision: number): string[] {
   const [minLon, minLat, maxLon, maxLat] = bbox;
 
   function isGeohashInsideBBox(geohash: string): boolean {
-    const {latitude, longitude} = decode(geohash);
+    const { latitude, longitude } = decode(geohash);
 
     return isBetween(latitude, minLat, maxLat) && isBetween(longitude, minLon, maxLon);
   }
@@ -39,10 +41,10 @@ export function getGeohashesInBBox(bbox: BBox, precision: number): string[] {
   const nw = encode(maxLat, minLon, precision);
   const ne = encode(maxLat, maxLon, precision);
 
-  const topRing = getGeohashesBetween(nw, ne, 'e');
-  const rightRing = getGeohashesBetween(ne, se, 's');
-  const bottomRing = getGeohashesBetween(sw, se, 'e');
-  const leftRing = getGeohashesBetween(nw, sw, 's');
+  const topRing = getGeohashesBetweenTwoGeohashes(nw, ne);
+  const rightRing = getGeohashesBetweenTwoGeohashes(ne, se);
+  const bottomRing = getGeohashesBetweenTwoGeohashes(sw, se);
+  const leftRing = getGeohashesBetweenTwoGeohashes(nw, sw);
 
   const inside: string[] = [sw, se, nw, ne, ...topRing, ...rightRing, ...bottomRing, ...leftRing];
   const firstBatch = uniq(inside.flatMap((d) => neighbors(d)));

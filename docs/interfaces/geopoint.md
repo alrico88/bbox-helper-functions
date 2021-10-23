@@ -15,7 +15,7 @@
 
 • **latitude**: *number*
 
-Defined in: [modules/bbox.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/bbox.ts#L4)
+Defined in: [modules/bbox.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L4)
 
 ___
 
@@ -23,4 +23,4 @@ ___
 
 • **longitude**: *number*
 
-Defined in: [modules/bbox.ts:5](https://github.com/alrico88/bbox-helper-functions/blob/a7556a0/src/modules/bbox.ts#L5)
+Defined in: [modules/bbox.ts:5](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L5)
