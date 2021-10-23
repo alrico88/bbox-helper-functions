@@ -9,14 +9,14 @@ specifiers:
   '@types/ngeohash': ^0.6.2
   '@typescript-eslint/eslint-plugin': ^4.17.0
   '@typescript-eslint/parser': ^4.17.0
-  coveralls: ^3.1.0
+  coveralls: ^3.1.1
   eslint: ^7.22.0
   eslint-config-airbnb-base: ^14.2.1
   eslint-config-airbnb-typescript: ^14.0.1
   eslint-config-prettier: ^8.1.0
   eslint-plugin-import: ^2.25.2
   eslint-plugin-jest: ^24.0.2
-  geohash-to-geojson: ^3.1.0
+  geohash-to-geojson: ^4.1.0
   geohashes-between: ^2.0.3
   jest: ^27.3.1
   lodash: ^4.17.21
@@ -25,7 +25,7 @@ specifiers:
   string-object-formatter: ^2.0.0
   ts-jest: ^27.0.7
   tslib: ^2.3.1
-  typedoc: ^0.20.30
+  typedoc: ^0.20.37
   typedoc-plugin-markdown: ^3.6.0
   typescript: ^4.2.3
   wkt-parser-helper: ^4.0.1
@@ -46,20 +46,20 @@ devDependencies:
   '@types/ngeohash': 0.6.2
   '@typescript-eslint/eslint-plugin': 4.17.0_1761b76df9b5dd3adf5d03ef124e1b23
   '@typescript-eslint/parser': 4.17.0_eslint@7.22.0+typescript@4.2.3
-  coveralls: 3.1.0
+  coveralls: 3.1.1
   eslint: 7.22.0
   eslint-config-airbnb-base: 14.2.1_75bf860c6d3a97e4474906917fa9eb8b
   eslint-config-airbnb-typescript: 14.0.1_c46768d87e3ce3c4bfbb75db6a975f35
   eslint-config-prettier: 8.1.0_eslint@7.22.0
   eslint-plugin-import: 2.25.2_eslint@7.22.0
   eslint-plugin-jest: 24.2.1_eslint@7.22.0+typescript@4.2.3
-  geohash-to-geojson: 3.1.0
+  geohash-to-geojson: 4.1.0
   jest: 27.3.1
   microbundle: 0.14.1
   ts-jest: 27.0.7_f2096855e4e38ab9ee63dd0bbafa1aaa
   tslib: 2.3.1
-  typedoc: 0.20.30_typescript@4.2.3
-  typedoc-plugin-markdown: 3.6.0_typedoc@0.20.30
+  typedoc: 0.20.37_typescript@4.2.3
+  typedoc-plugin-markdown: 3.6.0_typedoc@0.20.37
   typescript: 4.2.3
 
 packages:
@@ -1829,45 +1829,31 @@ packages:
       '@turf/invariant': 6.5.0
     dev: false
 
-  /@turf/circle/6.3.0:
-    resolution: {integrity: sha512-5N3J4YQr1efidvPgvtIQYpxb7gBVEoo00IFC0JNH6KqIVBMttFZw3Wsqor34ya91m58A5m6HTiz9Cdm1ktrEdw==}
+  /@turf/circle/6.5.0:
+    resolution: {integrity: sha512-oU1+Kq9DgRnoSbWFHKnnUdTmtcRUMmHoV9DjTXu9vOLNV5OWtAAh1VZ+mzsioGGzoDNT/V5igbFOkMfBQc0B6A==}
     dependencies:
-      '@turf/destination': 6.3.0
-      '@turf/helpers': 6.3.0
+      '@turf/destination': 6.5.0
+      '@turf/helpers': 6.5.0
     dev: true
 
-  /@turf/destination/6.3.0:
-    resolution: {integrity: sha512-aLt3U/XkJWyZW08Ln1qZwBNAGh27yhmYLu892+dBj3gKP6UUiR6ZopXxrBwjBVe00A6k2ktftKDn79qe0hptuw==}
+  /@turf/destination/6.5.0:
+    resolution: {integrity: sha512-4cnWQlNC8d1tItOz9B4pmJdWpXqS0vEvv65bI/Pj/genJnsL7evI0/Xw42RvEGROS481MPiU80xzvwxEvhQiMQ==}
     dependencies:
-      '@turf/helpers': 6.3.0
-      '@turf/invariant': 6.3.0
-    dev: true
-
-  /@turf/distance/6.3.0:
-    resolution: {integrity: sha512-basi24ssNFnH3iXPFjp/aNUrukjObiFWoIyDRqKyBJxVwVOwAWvfk4d38QQyBj5nDo5IahYRq/Q+T47/5hSs9w==}
-    dependencies:
-      '@turf/helpers': 6.3.0
-      '@turf/invariant': 6.3.0
+      '@turf/helpers': 6.5.0
+      '@turf/invariant': 6.5.0
     dev: true
 
   /@turf/helpers/6.3.0:
     resolution: {integrity: sha512-kr6KuD4Z0GZ30tblTEvi90rvvVNlKieXuMC8CTzE/rVQb0/f/Cb29zCXxTD7giQTEQY/P2nRW23wEqqyNHulCg==}
+    dev: false
 
   /@turf/helpers/6.5.0:
     resolution: {integrity: sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==}
-    dev: false
-
-  /@turf/invariant/6.3.0:
-    resolution: {integrity: sha512-2OFOi9p+QOrcIMySEnr+WlOiKaFZ1bY56jA98YyECewJHfhPFWUBZEhc4nWGRT0ahK08Vus9+gcuBX8QIpCIIw==}
-    dependencies:
-      '@turf/helpers': 6.3.0
-    dev: true
 
   /@turf/invariant/6.5.0:
     resolution: {integrity: sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==}
     dependencies:
       '@turf/helpers': 6.5.0
-    dev: false
 
   /@turf/meta/6.3.0:
     resolution: {integrity: sha512-qBJjaAJS9H3ap0HlGXyF/Bzfl0qkA9suafX/jnDsZvWMfVLt+s+o6twKrXOGk5t7nnNON2NFRC8+czxpu104EQ==}
@@ -2610,6 +2596,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /cheap-ruler/3.0.1:
+    resolution: {integrity: sha512-bmBKGkNKcwCpltGzfMXZMrFE06SG8dgSv96W39Mk+um7zbNTQNumKl5LBwFC0gbffy8Jnf0+SDHsOqpDYJxYow==}
+    dev: true
+
   /ci-info/3.2.0:
     resolution: {integrity: sha512-dVqRX7fLUm8J6FgHJ418XuIgDLZDkYcDFTeL6TA2gt5WlIZUQrrH6EZrNClwT/H0FateUsZkGIOPRrLbP+PR9A==}
     dev: true
@@ -2740,8 +2730,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /coveralls/3.1.0:
-    resolution: {integrity: sha512-sHxOu2ELzW8/NC1UP5XVLbZDzO4S3VxfFye3XYCznopHy02YjNkHcj5bKaVw2O7hVaBdBjEdQGpie4II1mWhuQ==}
+  /coveralls/3.1.1:
+    resolution: {integrity: sha512-+dxnG2NHncSD1NrqbSM3dn/lE57O6Qf/koe9+I7c+wzkqRmEvcp0kgJdxKInzYzkICKkFMZsX3Vct3++tsF9ww==}
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
@@ -3592,13 +3582,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /geohash-to-geojson/3.1.0:
-    resolution: {integrity: sha512-vtMizgry0KbWvKXj0693mF3Hhzt0U2DiT4JfyqBODJIOn5tD0/TDENWAmt1nZJoC1eeJ9e0uKJlLR63UjP9BJg==}
+  /geohash-to-geojson/4.1.0:
+    resolution: {integrity: sha512-yV09HwB+4drUrddPpAqb5AzFxq+L26LslRC/WXYVWkR+siILu/EuOcrxyE+JkAnFmyHtHEgx8hxLjjQB+L36+Q==}
     engines: {node: '>=10'}
     dependencies:
-      '@turf/circle': 6.3.0
-      '@turf/distance': 6.3.0
-      '@turf/helpers': 6.3.0
+      '@turf/circle': 6.5.0
+      cheap-ruler: 3.0.1
       ngeohash: 0.6.3
     dev: true
 
@@ -4919,8 +4908,8 @@ packages:
       tmpl: 1.0.5
     dev: true
 
-  /marked/2.0.1:
-    resolution: {integrity: sha512-5+/fKgMv2hARmMW7DOpykr2iLhl0NgjyELk5yn92iE7z8Se1IS9n3UsFm86hFXIkvMBmVxki8+ckcpjBeyo/hw==}
+  /marked/2.0.7:
+    resolution: {integrity: sha512-BJXxkuIfJchcXOJWTT2DOL+yFWifFv2yGYOUzvXg8Qz610QKw+sHCvTMYwA+qWGhlA2uivBezChZ/pBy1tWdkQ==}
     engines: {node: '>= 8.16.2'}
     hasBin: true
     dev: true
@@ -6608,23 +6597,23 @@ packages:
     resolution: {integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=}
     dev: false
 
-  /typedoc-default-themes/0.12.8:
-    resolution: {integrity: sha512-tyjyDTKy/JLnBSwvhoqd99VIjrP33SdOtwcMD32b+OqnrjZWe8HmZECbfBoacqoxjHd58gfeNw6wA7uvqWFa4w==}
+  /typedoc-default-themes/0.12.10:
+    resolution: {integrity: sha512-fIS001cAYHkyQPidWXmHuhs8usjP5XVJjWB8oZGqkTowZaz3v7g3KDZeeqE82FBrmkAnIBOY3jgy7lnPnqATbA==}
     engines: {node: '>= 8'}
     dev: true
 
-  /typedoc-plugin-markdown/3.6.0_typedoc@0.20.30:
+  /typedoc-plugin-markdown/3.6.0_typedoc@0.20.37:
     resolution: {integrity: sha512-fg4xby3awJVVxB8TdhHNsZQfiTC5x1XmauVwhKXc6hGeu1bzTnqrkmDT8NCjxfUgw64si8cUX1jBfBjAHthWpQ==}
     engines: {node: '>= 10.8.0'}
     peerDependencies:
       typedoc: '>=0.20.0'
     dependencies:
       handlebars: 4.7.7
-      typedoc: 0.20.30_typescript@4.2.3
+      typedoc: 0.20.37_typescript@4.2.3
     dev: true
 
-  /typedoc/0.20.30_typescript@4.2.3:
-    resolution: {integrity: sha512-A4L6JDShPFwZDt9qp7FBsEpW7C6rA5fRv6ywgBuxGxZnT2wuF5afbWzmrwqHR3Xw38V1H2L4v/VJ0S/llBwV6Q==}
+  /typedoc/0.20.37_typescript@4.2.3:
+    resolution: {integrity: sha512-9+qDhdc4X00qTNOtii6QX2z7ndAeWVOso7w3MPSoSJdXlVhpwPfm1yEp4ooKuWA9fiQILR8FKkyjmeqa13hBbw==}
     engines: {node: '>= 10.8.0'}
     hasBin: true
     peerDependencies:
@@ -6635,12 +6624,12 @@ packages:
       handlebars: 4.7.7
       lodash: 4.17.21
       lunr: 2.3.9
-      marked: 2.0.1
+      marked: 2.0.7
       minimatch: 3.0.4
       progress: 2.0.3
       shelljs: 0.8.4
       shiki: 0.9.3
-      typedoc-default-themes: 0.12.8
+      typedoc-default-themes: 0.12.10
       typescript: 4.2.3
     dev: true
 

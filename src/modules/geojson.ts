@@ -18,7 +18,10 @@ export function BBoxToGeoJSONPolygon(bbox: BBox): Polygon {
   };
 }
 
-export function BBoxToGeoJSONFeature(bbox: BBox, properties: GeoJsonProperties = {}): Feature<Polygon> {
+export function BBoxToGeoJSONFeature(
+  bbox: BBox,
+  properties: GeoJsonProperties = {},
+): Feature<Polygon> {
   return {
     type: 'Feature',
     geometry: BBoxToGeoJSONPolygon(bbox),
