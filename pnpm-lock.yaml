@@ -17,7 +17,7 @@ specifiers:
   eslint-plugin-import: ^2.25.2
   eslint-plugin-jest: ^24.0.2
   geohash-to-geojson: ^4.1.0
-  geohashes-between: ^2.0.3
+  geohashes-between: ^2.0.4
   jest: ^27.3.1
   lodash: ^4.17.21
   microbundle: ^0.14.1
@@ -33,7 +33,7 @@ specifiers:
 dependencies:
   '@sindresorhus/is': 4.2.0
   '@turf/bbox': 6.3.0
-  geohashes-between: 2.0.3
+  geohashes-between: 2.0.4
   lodash: 4.17.21
   ngeohash: 0.6.3
   string-object-formatter: 2.0.0
@@ -1949,6 +1949,7 @@ packages:
 
   /@types/node/14.14.34:
     resolution: {integrity: sha512-dBPaxocOK6UVyvhbnpFIj2W+S+1cBTkHQbFQfeeJhoKFbzYcVUGHvddeWPSucKATb3F0+pgDq0i6ghEaZjsugA==}
+    dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -2439,16 +2440,16 @@ packages:
     resolution: {integrity: sha1-ibTRmasr7kneFk6gK4nORi1xt2c=}
     dev: true
 
-  /bbox-helper-functions/2.4.1:
-    resolution: {integrity: sha512-e0l3zKgGmMgd4JIfGl7lWZvY0z1L+/25tO7YjD10XZEtFPoegFWKWB3NZ9CAyvCifV4k3ZCLOrRukbqZ/wI+0A==}
+  /bbox-helper-functions/3.0.0:
+    resolution: {integrity: sha512-9YK2zTghada7A3+qdwSsBwJAc3nY3/8hhjduqt8xJmoHY5Hwi6csa2U1iFb51JRbBi5O82zqboeyXtgJUexihQ==}
     dependencies:
+      '@sindresorhus/is': 4.2.0
       '@turf/bbox': 6.3.0
-      geohashes-between: 1.0.0
+      geohashes-between: 2.0.4
       lodash: 4.17.21
-      lodash-es: 4.17.21
       ngeohash: 0.6.3
       string-object-formatter: 2.0.0
-      wkt-parser-helper: 3.0.0
+      wkt-parser-helper: 4.0.1
     dev: false
 
   /bcrypt-pbkdf/1.0.2:
@@ -2713,11 +2714,6 @@ packages:
 
   /core-util-is/1.0.2:
     resolution: {integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=}
-    dev: true
-
-  /core-util-is/1.0.3:
-    resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
-    dev: false
 
   /cosmiconfig/7.0.1:
     resolution: {integrity: sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==}
@@ -3591,20 +3587,13 @@ packages:
       ngeohash: 0.6.3
     dev: true
 
-  /geohashes-between/1.0.0:
-    resolution: {integrity: sha512-7n+YnfVrzLwEgFuG5VT+YQHd09x5HJcOtSo+5vzSX/4xw12JtALOQvWO2B0HGuxrqeGZXZkBrPm9jNfwih65UQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      ngeohash: 0.6.3
-    dev: false
-
-  /geohashes-between/2.0.3:
-    resolution: {integrity: sha512-w1xf1cXrRFvJsBs98XRbKbSE8uR3ce+ksqe8PjqO0nzdqmUGOZR97sjAtOpgjSy4x/9JoA9Rlh2/9bRFD9vlHQ==}
+  /geohashes-between/2.0.4:
+    resolution: {integrity: sha512-3oSNRNnSMgwUGUPnpFr8V+udun7bQSFGcSry/dfpUq+mlulb3Facy+oTyfs6+spEUwKVzYmSbeh6FVd5Oxxw/g==}
     engines: {node: '>=10'}
     dependencies:
       '@turf/bearing': 6.5.0
       '@turf/helpers': 6.5.0
-      bbox-helper-functions: 2.4.1
+      bbox-helper-functions: 3.0.0
       lineclip: 1.1.5
       ngeohash: 0.6.3
       number-helper-functions: 4.0.0
@@ -4836,10 +4825,6 @@ packages:
       p-locate: 4.1.0
     dev: true
 
-  /lodash-es/4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
-
   /lodash.camelcase/4.3.0:
     resolution: {integrity: sha1-soqmKIorn8ZRA1x3EfZathkDMaY=}
     dev: true
@@ -5835,7 +5820,7 @@ packages:
   /readable-stream/2.0.6:
     resolution: {integrity: sha1-j5A0HmilPMySh4jaz80Rs265t44=}
     dependencies:
-      core-util-is: 1.0.3
+      core-util-is: 1.0.2
       inherits: 2.0.4
       isarray: 1.0.0
       process-nextick-args: 1.0.7
@@ -6812,22 +6797,10 @@ packages:
       isexe: 2.0.0
     dev: true
 
-  /wkt-parser-helper/3.0.0:
-    resolution: {integrity: sha512-/mwKEVcEgjbeIx6bcDGX89pR3MsA2GR21fF68NxRGhL0DWdSohKCN4Y1nGkJ4CrhPor9j1Sziy4vVDXMtRsurw==}
-    dependencies:
-      wkx: 0.5.0
-    dev: false
-
   /wkt-parser-helper/4.0.1:
     resolution: {integrity: sha512-cLa2UiT2nyj33dTNxv5mUisARqhlz0G03vgkFMrOFZvUFTkMNzuk9ueFRvfhVZG+5vivkd9d6bqch1taK8erpA==}
     dependencies:
       wellknown: 0.5.0
-    dev: false
-
-  /wkx/0.5.0:
-    resolution: {integrity: sha512-Xng/d4Ichh8uN4l0FToV/258EjMGU9MGcA0HV2d9B/ZpZB3lqQm7nkOdZdm5GhKtLLhAE7PiVQwN4eN+2YJJUg==}
-    dependencies:
-      '@types/node': 14.14.34
     dev: false
 
   /word-wrap/1.2.3:

@@ -51,7 +51,7 @@
   "dependencies": {
     "@sindresorhus/is": "^4.2.0",
     "@turf/bbox": "^6.0.1",
-    "geohashes-between": "^2.0.3",
+    "geohashes-between": "^2.0.4",
     "lodash": "^4.17.21",
     "ngeohash": "^0.6.3",
     "string-object-formatter": "^2.0.0",
