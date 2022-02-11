@@ -68,7 +68,8 @@ export function getDatasetBBox(
 
     return [minLon, minLat, maxLon, maxLat];
   }
-  const defaultCoord = 180;
+  const defaultLon = 180;
+  const defaultLat = 90;
 
-  return [-defaultCoord, -defaultCoord, defaultCoord, defaultCoord];
+  return [-defaultLon, -defaultLat, defaultLon, defaultLat];
 }
