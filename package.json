@@ -1,6 +1,6 @@
 {
   "name": "bbox-helper-functions",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Helper functions to convert BBoxes to multiple formats",
   "source": "src/index.ts",
   "main": "./dist/index.js",
