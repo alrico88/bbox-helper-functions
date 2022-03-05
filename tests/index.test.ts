@@ -5,6 +5,7 @@ import {geohashToPolygonFeature} from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
 import {Feature, Polygon} from 'geojson';
 import {enforceLonLatCorners, Corners} from '../src/modules/helpers';
+import {describe, expect, test} from 'vitest';
 
 const testBBox: BBox = [-3.708011, 40.418038, -3.687877, 40.428754];
 

@@ -2,10 +2,16 @@
   "name": "bbox-helper-functions",
   "version": "3.0.2",
   "description": "Helper functions to convert BBoxes to multiple formats",
-  "source": "src/index.ts",
   "main": "./dist/index.js",
-  "module": "./dist/index.umd.js",
-  "typings": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist",
     "src"
@@ -19,26 +25,26 @@
   "sideEffects": false,
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
-    "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.168",
     "@types/ngeohash": "^0.6.2",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
+    "c8": "^7.11.0",
     "coveralls": "^3.1.1",
     "eslint": "^7.22.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jest": "^24.0.2",
     "geohash-to-geojson": "^4.1.0",
-    "jest": "^27.3.1",
-    "microbundle": "^0.14.1",
-    "ts-jest": "^27.0.7",
+    "husky": "^7.0.4",
     "tslib": "^2.3.1",
+    "tsup": "^5.11.13",
     "typedoc": "^0.20.37",
     "typedoc-plugin-markdown": "^3.6.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "vite": "^2.8.6",
+    "vitest": "^0.5.9"
   },
   "keywords": [
     "bbox",
@@ -58,11 +64,18 @@
     "wkt-parser-helper": "^4.0.1"
   },
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
-    "test": "jest",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info",
+    "dev": "pnpm run build -- --watch src",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint --cache --fix --ignore-path .gitignore --ext .ts,.js src",
     "docs": "typedoc src/index.ts --readme README.md --gitRevision master",
-    "prepublish": "pnpm run build"
+    "prepublish": "pnpm run build",
+    "coveralls": "vitest run --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm run lint"
+    }
   }
 }
