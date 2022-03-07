@@ -2,8 +2,7 @@ import {
   decode_bbox, decode, neighbors, encode,
 } from 'ngeohash';
 import { getGeohashesBetweenTwoGeohashes } from 'geohashes-between';
-import uniq from 'lodash/uniq';
-import { isBetween } from './helpers';
+import { isBetween, uniq } from './helpers';
 import { BBox } from './bbox';
 
 /**

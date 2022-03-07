@@ -119,3 +119,15 @@ export function enforceLonLatCorners(corners: Corners): Corners {
 export function isBetween(toCheck: number, min: number, max: number): boolean {
   return toCheck >= min && toCheck <= max;
 }
+
+/**
+ * Gets an array of unique values
+ *
+ * @export
+ * @template T
+ * @param {T[]} array Array to find uniques of
+ * @return {T[]} The unique values
+ */
+export function uniq<T>(array: T[]): T[] {
+  return Array.from(new Set(array));
+}
