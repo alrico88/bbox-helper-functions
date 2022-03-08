@@ -17,7 +17,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-import: ^2.25.4
   geohash-to-geojson: ^4.2.1
-  geohashes-between: ^2.1.0
+  geohashes-between: ^2.2.0
   husky: ^7.0.4
   ngeohash: ^0.6.3
   string-object-formatter: ^2.0.0
@@ -34,7 +34,7 @@ dependencies:
   '@sindresorhus/is': 4.6.0
   '@turf/bbox': 6.5.0
   dlv: 1.1.3
-  geohashes-between: 2.1.0
+  geohashes-between: 2.2.0
   ngeohash: 0.6.3
   string-object-formatter: 2.0.0
   wkt-parser-helper: 4.0.1
@@ -475,18 +475,6 @@ packages:
   /balanced-match/1.0.0:
     resolution: {integrity: sha1-ibTRmasr7kneFk6gK4nORi1xt2c=}
     dev: true
-
-  /bbox-helper-functions/3.2.2:
-    resolution: {integrity: sha512-nZhxVlkzjKOijHqki9Z6TtdYtvTAOd+MfSEbGh67XX3qdexEdgDjWkzJbLlL6NGlx4pQred4yEPT8QP1Jkva7w==}
-    dependencies:
-      '@sindresorhus/is': 4.6.0
-      '@turf/bbox': 6.5.0
-      dlv: 1.1.3
-      geohashes-between: 2.1.0
-      ngeohash: 0.6.3
-      string-object-formatter: 2.0.0
-      wkt-parser-helper: 4.0.1
-    dev: false
 
   /bcrypt-pbkdf/1.0.2:
     resolution: {integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=}
@@ -1430,12 +1418,11 @@ packages:
       ngeohash: 0.6.3
     dev: true
 
-  /geohashes-between/2.1.0:
-    resolution: {integrity: sha512-r+udzG9WG5q5OWXlkPFGs4SYvH4KxoKKPGYv19wJBLp5wWiHRzNSunITiihuj3pf2ha7V441i0iS6H+xEK8NGw==}
+  /geohashes-between/2.2.0:
+    resolution: {integrity: sha512-kMJEBB+N4Wsm5CvDYsP81wfJzGQx+Yy6ii/8k3rlAfjdx9rjSn4Jt1YNLoBhG1gKMIbsStgm1stGfy3DgOHY2g==}
     dependencies:
       '@turf/bearing': 6.5.0
       '@turf/helpers': 6.5.0
-      bbox-helper-functions: 3.2.2
       lineclip: 1.1.5
       ngeohash: 0.6.3
       number-helper-functions: 4.1.1
