@@ -1,7 +1,6 @@
 import ngeohash from 'ngeohash';
-import { getGeohashesBetweenTwoGeohashes } from 'geohashes-between';
-import { isBetween, uniq } from './helpers';
-import { BBox } from './bbox';
+import type { BBox } from './bbox';
+import { isBetween } from './helpers';
 
 /**
  * Gets the BBox of a given geohash
@@ -16,60 +15,30 @@ export function getGeohashBBox(geohash: string): BBox {
   return [minLon, minLat, maxLon, maxLat];
 }
 
+function isGeohashCentroidInBBox(geohash: string, bbox: BBox): boolean {
+  const { latitude, longitude } = ngeohash.decode(geohash);
+
+  const [minLon, minLat, maxLon, maxLat] = bbox;
+
+  return isBetween(latitude, minLat, maxLat) && isBetween(longitude, minLon, maxLon);
+}
+
 /**
  * Gets all the geohashes inside a BBox
  *
  * @export
  * @param {BBox} bbox The BBox
  * @param {number} precision Precision for the geohashes
+ * @param {boolean} [strict=false] Only return geohashes whose centroids are inside BBox
  * @return {string} Array of geohash strings
  */
-export function getGeohashesInBBox(bbox: BBox, precision: number): string[] {
+export function getGeohashesInBBox(bbox: BBox, precision: number, strict = false): string[] {
   const [minLon, minLat, maxLon, maxLat] = bbox;
 
-  function isGeohashInsideBBox(geohash: string): boolean {
-    const { latitude, longitude } = ngeohash.decode(geohash);
+  const inside = ngeohash.bboxes(minLat, minLon, maxLat, maxLon, precision);
 
-    return isBetween(latitude, minLat, maxLat) && isBetween(longitude, minLon, maxLon);
+  if (strict) {
+    return inside.filter((hash) => isGeohashCentroidInBBox(hash, bbox));
   }
-
-  const sw = ngeohash.encode(minLat, minLon, precision);
-  const se = ngeohash.encode(minLat, maxLon, precision);
-  const nw = ngeohash.encode(maxLat, minLon, precision);
-  const ne = ngeohash.encode(maxLat, maxLon, precision);
-
-  const topRing = getGeohashesBetweenTwoGeohashes(nw, ne);
-  const rightRing = getGeohashesBetweenTwoGeohashes(ne, se);
-  const bottomRing = getGeohashesBetweenTwoGeohashes(sw, se);
-  const leftRing = getGeohashesBetweenTwoGeohashes(nw, sw);
-
-  const inside: string[] = [sw, se, nw, ne, ...topRing, ...rightRing, ...bottomRing, ...leftRing];
-  const firstBatch = uniq(inside.flatMap((d) => ngeohash.neighbors(d)));
-  const toCheck: Set<string> = new Set();
-  const checked: Set<string> = new Set();
-
-  inside.forEach((geohash) => {
-    checked.add(geohash);
-  });
-
-  firstBatch.forEach((neighbor) => {
-    toCheck.add(neighbor);
-  });
-
-  while (toCheck.size > 0) {
-    const [ghash] = Array.from(toCheck);
-
-    if (isGeohashInsideBBox(ghash)) {
-      inside.push(ghash);
-      const neighborsToCheck = ngeohash.neighbors(ghash).filter((d) => !checked.has(d));
-      neighborsToCheck.forEach((neighbor) => {
-        toCheck.add(neighbor);
-      });
-    }
-
-    toCheck.delete(ghash);
-    checked.add(ghash);
-  }
-
-  return uniq(inside);
+  return inside;
 }
