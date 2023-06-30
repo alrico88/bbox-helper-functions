@@ -179,7 +179,7 @@ describe('Testing BBoxHelper methods', () => {
   });
 
   test('The geohashes inside a big enough area should be more than 0', () => {
-    const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8);
+    const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8, true);
 
     expect(geohashesInside.length).toBeGreaterThanOrEqual(1);
   });
