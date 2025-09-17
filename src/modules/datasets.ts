@@ -1,10 +1,9 @@
-/* eslint-disable max-len */
 import { Accessors } from '../models/Accessors';
-import { BBoxAsObject } from '../models/BBoxAsObject';
-import { DatasetOptions } from '../models/DatasetOptions';
-import { BBox } from './bbox';
+import type { BBoxAsObject } from '../models/BBoxAsObject';
+import type { DatasetOptions } from '../models/DatasetOptions';
+import type { BBox } from './bbox';
 
-class DefaultDatasetOptions implements DatasetOptions {
+class DefaultDatasetOptions<T> implements DatasetOptions<T> {
   public latitudeProp: string;
 
   public longitudeProp: string;
@@ -19,13 +18,14 @@ class DefaultDatasetOptions implements DatasetOptions {
  * Gets the BBox of an array of objects
  *
  * @export
- * @param {any[]} dataset Dataset to find BBox of
+ * @template T
+ * @param {T[]} dataset Dataset to find BBox of
  * @param {DatasetOptions} [datasetOptions=new DefaultDatasetOptions()] Options for defining latitude and longitude props or accessors
  * @return {BBox} The dataset's bbox
  */
-export function getDatasetBBox(
-  dataset: any[],
-  datasetOptions: DatasetOptions = new DefaultDatasetOptions(),
+export function getDatasetBBox<T>(
+  dataset: T[],
+  datasetOptions: DatasetOptions<T> = new DefaultDatasetOptions(),
 ): BBox {
   const accessors = new Accessors(datasetOptions);
 
@@ -41,30 +41,31 @@ export function getDatasetBBox(
       maxLon: initLon,
     };
 
-    const {
-      minLat, minLon, maxLat, maxLon,
-    } = dataset.reduce((agg: BBoxAsObject, item) => {
-      const latitude = accessors.latitude(item);
-      const longitude = accessors.longitude(item);
+    const { minLat, minLon, maxLat, maxLon } = dataset.reduce(
+      (agg: BBoxAsObject, item) => {
+        const latitude = accessors.latitude(item);
+        const longitude = accessors.longitude(item);
 
-      if (latitude < agg.minLat) {
-        agg.minLat = latitude;
-      }
+        if (latitude < agg.minLat) {
+          agg.minLat = latitude;
+        }
 
-      if (longitude < agg.minLon) {
-        agg.minLon = longitude;
-      }
+        if (longitude < agg.minLon) {
+          agg.minLon = longitude;
+        }
 
-      if (latitude > agg.maxLat) {
-        agg.maxLat = latitude;
-      }
+        if (latitude > agg.maxLat) {
+          agg.maxLat = latitude;
+        }
 
-      if (longitude > agg.maxLon) {
-        agg.maxLon = longitude;
-      }
+        if (longitude > agg.maxLon) {
+          agg.maxLon = longitude;
+        }
 
-      return agg;
-    }, initializer);
+        return agg;
+      },
+      initializer,
+    );
 
     return [minLon, minLat, maxLon, maxLat];
   }

@@ -1,4 +1,4 @@
-import { BBox } from './bbox';
+import type { BBox } from './bbox';
 
 /**
  * Converts lat lon array to lon lat array
@@ -26,7 +26,9 @@ export function checkBBox(bbox: BBox | number[]): void {
   }
 
   if (Array.isArray(bbox) && bbox.length !== bboxLength) {
-    throw new Error('BBox should have 4 coordinates [minLon, minLat, maxLon, maxLat]');
+    throw new Error(
+      'BBox should have 4 coordinates [minLon, minLat, maxLon, maxLat]',
+    );
   }
 }
 

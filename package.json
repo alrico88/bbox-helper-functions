@@ -2,20 +2,29 @@
   "name": "bbox-helper-functions",
   "version": "3.3.0",
   "description": "Helper functions to convert BBoxes to multiple formats",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
+  "scripts": {
+    "build": "rslib build",
+    "check": "biome check --write",
+    "dev": "rslib build --watch",
+    "format": "biome format --write",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "docs": "typedoc src/index.ts --readme none --gitRevision master --plugin typedoc-plugin-markdown",
+    "prepublish": "pnpm run build"
+  },
   "author": "Alberto Rico",
   "license": "MIT",
   "repository": {
@@ -24,27 +33,19 @@
   },
   "sideEffects": false,
   "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@rslib/core": "^0.13.3",
     "@types/dlv": "^1.1.2",
     "@types/geojson": "^7946.0.7",
     "@types/ngeohash": "^0.6.4",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "c8": "^7.11.0",
-    "coveralls": "^3.1.1",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.2",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.4",
+    "@vitest/coverage-v8": "3.2.4",
     "geohash-to-geojson": "^4.2.1",
-    "husky": "^7.0.4",
+    "husky": "^9.1.7",
     "tslib": "^2.3.1",
-    "tsup": "^5.12.0",
-    "typedoc": "^0.20.37",
-    "typedoc-plugin-markdown": "^3.11.14",
-    "typescript": "^4.6.2",
-    "vite": "^2.8.6",
-    "vitest": "^0.6.0"
+    "typedoc": "^0.28.13",
+    "typedoc-plugin-markdown": "^4.8.1",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "keywords": [
     "bbox",
@@ -55,22 +56,12 @@
     "wkt"
   ],
   "dependencies": {
-    "@sindresorhus/is": "^4.6.0",
-    "@turf/bbox": "^6.5.0",
+    "@sindresorhus/is": "^7.1.0",
+    "@turf/bbox": "^7.2.0",
     "dlv": "^1.1.3",
     "ngeohash": "^0.6.3",
-    "string-object-formatter": "^2.0.0",
-    "wkt-parser-helper": "^4.0.1"
-  },
-  "scripts": {
-    "dev": "pnpm run build -- --watch src",
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
-    "test": "vitest run",
-    "coverage": "vitest run --coverage",
-    "lint": "eslint --cache --fix --ignore-path .gitignore --ext .ts,.js src",
-    "docs": "typedoc src/index.ts --readme README.md --gitRevision master",
-    "prepublish": "pnpm run build",
-    "coveralls": "vitest run --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "string-object-formatter": "^4.0.1",
+    "wkt-parser-helper": "^5.0.0"
   },
   "husky": {
     "hooks": {

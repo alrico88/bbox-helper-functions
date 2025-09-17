@@ -13,15 +13,20 @@ export interface GeoPoint {
  * @param {BBox} bboxContainer The BBox container
  * @return {boolean} Whether the BBox is inside the other BBox
  */
-export function isBBoxInsideBBox(bboxToCheck: BBox, bboxContainer: BBox): boolean {
-  const [containerMinLon, containerMinLat, containerMaxLon, containerMaxLat] = bboxContainer;
-  const [toCheckMinLon, toCheckMinLat, toCheckMaxLon, toCheckMaxLat] = bboxToCheck;
+export function isBBoxInsideBBox(
+  bboxToCheck: BBox,
+  bboxContainer: BBox,
+): boolean {
+  const [containerMinLon, containerMinLat, containerMaxLon, containerMaxLat] =
+    bboxContainer;
+  const [toCheckMinLon, toCheckMinLat, toCheckMaxLon, toCheckMaxLat] =
+    bboxToCheck;
 
   return (
-    containerMinLon <= toCheckMinLon
-    && containerMinLat <= toCheckMinLat
-    && containerMaxLon >= toCheckMaxLon
-    && containerMaxLat >= toCheckMaxLat
+    containerMinLon <= toCheckMinLon &&
+    containerMinLat <= toCheckMinLat &&
+    containerMaxLon >= toCheckMaxLon &&
+    containerMaxLat >= toCheckMaxLat
   );
 }
 
