@@ -1,44 +1,47 @@
-[bbox-helper-functions](../README.md) / [Exports](../modules.md) / DatasetOptions
+[**bbox-helper-functions**](../README.md)
 
-# Interface: DatasetOptions
+***
 
-## Table of contents
+[bbox-helper-functions](../README.md) / DatasetOptions
 
-### Properties
+# Interface: DatasetOptions\<T\>
 
-- [latitudeAccessor](datasetoptions.md#latitudeaccessor)
-- [latitudeProp](datasetoptions.md#latitudeprop)
-- [longitudeAccessor](datasetoptions.md#longitudeaccessor)
-- [longitudeProp](datasetoptions.md#longitudeprop)
+Defined in: [models/DatasetOptions.ts:3](https://github.com/alrico88/bbox-helper-functions/blob/master/src/models/DatasetOptions.ts#L3)
+
+## Type Parameters
+
+### T
+
+`T`
 
 ## Properties
 
-### latitudeAccessor
+### latitudeAccessor?
 
-• `Optional` **latitudeAccessor**: [*AccessorFunction*](../modules.md#accessorfunction)
+> `optional` **latitudeAccessor**: [`AccessorFunction`](../type-aliases/AccessorFunction.md)\<`T`\>
 
-Defined in: models/DatasetOptions.ts:6
+Defined in: [models/DatasetOptions.ts:6](https://github.com/alrico88/bbox-helper-functions/blob/master/src/models/DatasetOptions.ts#L6)
 
-___
+***
 
-### latitudeProp
+### latitudeProp?
 
-• `Optional` **latitudeProp**: *string*
+> `optional` **latitudeProp**: `string`
 
-Defined in: models/DatasetOptions.ts:4
+Defined in: [models/DatasetOptions.ts:4](https://github.com/alrico88/bbox-helper-functions/blob/master/src/models/DatasetOptions.ts#L4)
 
-___
+***
 
-### longitudeAccessor
+### longitudeAccessor?
 
-• `Optional` **longitudeAccessor**: [*AccessorFunction*](../modules.md#accessorfunction)
+> `optional` **longitudeAccessor**: [`AccessorFunction`](../type-aliases/AccessorFunction.md)\<`T`\>
 
-Defined in: models/DatasetOptions.ts:7
+Defined in: [models/DatasetOptions.ts:7](https://github.com/alrico88/bbox-helper-functions/blob/master/src/models/DatasetOptions.ts#L7)
 
-___
+***
 
-### longitudeProp
+### longitudeProp?
 
-• `Optional` **longitudeProp**: *string*
+> `optional` **longitudeProp**: `string`
 
-Defined in: models/DatasetOptions.ts:5
+Defined in: [models/DatasetOptions.ts:5](https://github.com/alrico88/bbox-helper-functions/blob/master/src/models/DatasetOptions.ts#L5)
