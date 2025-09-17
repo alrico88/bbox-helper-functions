@@ -1,8 +1,8 @@
-export type AccessorFunction = (item: any) => number;
+export type AccessorFunction<T> = (item: T) => number;
 
-export interface DatasetOptions {
+export interface DatasetOptions<T> {
   latitudeProp?: string;
   longitudeProp?: string;
-  latitudeAccessor?: AccessorFunction;
-  longitudeAccessor?: AccessorFunction;
+  latitudeAccessor?: AccessorFunction<T>;
+  longitudeAccessor?: AccessorFunction<T>;
 }

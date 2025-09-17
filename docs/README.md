@@ -1,37 +1,31 @@
-bbox-helper-functions / [Exports](modules.md)
+**bbox-helper-functions**
+
+***
 
 # bbox-helper-functions
 
-## Installation
+## Interfaces
 
-Using npm `npm i bbox-helper-functions`
+- [DatasetOptions](interfaces/DatasetOptions.md)
+- [GeoPoint](interfaces/GeoPoint.md)
 
-Using yarn `yarn add bbox-helper-functions`
+## Type Aliases
 
-## Usage
+- [AccessorFunction](type-aliases/AccessorFunction.md)
+- [BBox](type-aliases/BBox.md)
 
-In CommonJS env
+## Functions
 
-```javascript
-const { getWKBBox } = require('bbox-helper-functions');
-
-const bbox = getWKBBox(
-  'POLYGON((-3.706512451171875 40.420074462890625,-3.70513916015625 40.420074462890625,-3.70513916015625 40.42144775390625,-3.706512451171875 40.42144775390625,-3.706512451171875 40.420074462890625))'
-);
-
-// bbox will be [minLon, minLat, maxLon, maxLat]
-```
-
-Using imports
-
-```javascript
-import { getGeohashBBox } from 'bbox-helper-functions';
-
-const geohashBBox = getGeohashBBox('ezjmun');
-
-// geohashBBox will be [minLon, minLat, maxLon, maxLat]
-```
-
-## Documentation
-
-See [DOCS](./docs/modules.md)
+- [BBoxToCorners](functions/BBoxToCorners.md)
+- [BBoxToGeoJSONFeature](functions/BBoxToGeoJSONFeature.md)
+- [BBoxToGeoJSONPolygon](functions/BBoxToGeoJSONPolygon.md)
+- [BBoxToWKT](functions/BBoxToWKT.md)
+- [getBBoxPostGISSentence](functions/getBBoxPostGISSentence.md)
+- [getBBoxSQLSentence](functions/getBBoxSQLSentence.md)
+- [getDatasetBBox](functions/getDatasetBBox.md)
+- [getGeohashBBox](functions/getGeohashBBox.md)
+- [getGeohashesInBBox](functions/getGeohashesInBBox.md)
+- [getGeoJSONBBox](functions/getGeoJSONBBox.md)
+- [getWKTBBox](functions/getWKTBBox.md)
+- [isBBoxInsideBBox](functions/isBBoxInsideBBox.md)
+- [isPointInsideBBox](functions/isPointInsideBBox.md)

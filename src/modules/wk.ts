@@ -2,7 +2,7 @@ import { convertToWK, parseFromWK } from 'wkt-parser-helper';
 import turfBBox from '@turf/bbox';
 import { BBoxToGeoJSONPolygon } from './geojson';
 import { checkBBox } from './helpers';
-import { BBox } from './bbox';
+import type { BBox } from './bbox';
 
 /**
  * Converts a BBox to WKT

@@ -1,11 +1,25 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-import {BBoxToCorners, BBoxToWKT, BBoxToGeoJSONPolygon, BBoxToGeoJSONFeature, getGeoJSONBBox, getWKTBBox, getBBoxSQLSentence, getGeohashBBox, BBox, getDatasetBBox, isBBoxInsideBBox, isPointInsideBBox, getGeohashesInBBox, getBBoxPostGISSentence} from '../src';
-import {convertToWK} from 'wkt-parser-helper';
-import {geohashToPolygonFeature} from 'geohash-to-geojson';
+import {
+  BBoxToCorners,
+  BBoxToWKT,
+  BBoxToGeoJSONPolygon,
+  BBoxToGeoJSONFeature,
+  getGeoJSONBBox,
+  getWKTBBox,
+  getBBoxSQLSentence,
+  getGeohashBBox,
+  type BBox,
+  getDatasetBBox,
+  isBBoxInsideBBox,
+  isPointInsideBBox,
+  getGeohashesInBBox,
+  getBBoxPostGISSentence,
+} from '../src';
+import { convertToWK } from 'wkt-parser-helper';
+import { geohashToPolygonFeature } from 'geohash-to-geojson';
 import turfBbox from '@turf/bbox';
-import {Feature, Polygon} from 'geojson';
-import {enforceLonLatCorners, Corners} from '../src/modules/helpers';
-import {describe, expect, test} from 'vitest';
+import type { Feature, Polygon } from 'geojson';
+import { enforceLonLatCorners, type Corners } from '../src/modules/helpers';
+import { describe, expect, test } from 'vitest';
 
 const testBBox: BBox = [-3.708011, 40.418038, -3.687877, 40.428754];
 
@@ -103,13 +117,11 @@ describe('Testing BBoxHelper methods', () => {
   });
 
   test('The SQL sentence generator should return 4 statements according to minLon, minLat, maxLon, maxLat', () => {
-    const sql = getBBoxSQLSentence(
-      testBBox,
-      'latitude',
-      'longitude'
-    );
+    const sql = getBBoxSQLSentence(testBBox, 'latitude', 'longitude');
 
-    expect(sql).toBe(`AND latitude <= ${maxLat} AND latitude >= ${minLat} AND longitude <= ${maxLon} AND longitude >= ${minLon}`);
+    expect(sql).toBe(
+      `AND latitude <= ${maxLat} AND latitude >= ${minLat} AND longitude <= ${maxLon} AND longitude >= ${minLon}`,
+    );
   });
 
   test('The BBox of a geohash should be the same as the BBox of the GeoJSON feature representation of the geohash', () => {
@@ -121,47 +133,82 @@ describe('Testing BBoxHelper methods', () => {
   });
 
   test('The BBox of a dataset should be the same as the domains of latitude and longitude mapped arrays', () => {
-    expect(getDatasetBBox(dataset, {
-      latitudeProp: 'latitude',
-      longitudeProp: 'longitude',
-    })).toStrictEqual([2, -5, 19, 2]);
+    expect(
+      getDatasetBBox(dataset, {
+        latitudeProp: 'latitude',
+        longitudeProp: 'longitude',
+      }),
+    ).toStrictEqual([2, -5, 19, 2]);
   });
 
   test('The BBox of a dataset should be the same as the domains of latitude and longitude mapped arrays, using accesor functions', () => {
-    expect(getDatasetBBox(dataset, {
-      latitudeAccessor: (item: DatasetItem) => item.latitude,
-      longitudeAccessor: (item: DatasetItem) => item.longitude,
-    })).toStrictEqual([2, -5, 19, 2]);
+    expect(
+      getDatasetBBox(dataset, {
+        latitudeAccessor: (item: DatasetItem) => item.latitude,
+        longitudeAccessor: (item: DatasetItem) => item.longitude,
+      }),
+    ).toStrictEqual([2, -5, 19, 2]);
   });
 
   test('A BBox contained in another one should return true for isBBoxInsideBBox method', () => {
-    expect(isBBoxInsideBBox([-3.933105, 39.783213, -2.823486, 40.538852], [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(true);
+    expect(
+      isBBoxInsideBBox(
+        [-3.933105, 39.783213, -2.823486, 40.538852],
+        [-4.570313, 39.376772, -2.27417, 40.930115],
+      ),
+    ).toBe(true);
   });
 
   test('A bigger BBox should not be contained in smaller BBox', () => {
-    expect(isBBoxInsideBBox([-4.570313, 39.376772, -2.27417, 40.930115], [-3.933105, 39.783213, -2.823486, 40.538852])).toBe(false);
+    expect(
+      isBBoxInsideBBox(
+        [-4.570313, 39.376772, -2.27417, 40.930115],
+        [-3.933105, 39.783213, -2.823486, 40.538852],
+      ),
+    ).toBe(false);
   });
 
   test('Two intersecting BBoxes should not be contained one another', () => {
-    expect(isBBoxInsideBBox([-4.570313, 39.376772, -2.27417, 40.930115], [-3.054199, 40.229218, -1.230469, 41.302571])).toBe(false);
+    expect(
+      isBBoxInsideBBox(
+        [-4.570313, 39.376772, -2.27417, 40.930115],
+        [-3.054199, 40.229218, -1.230469, 41.302571],
+      ),
+    ).toBe(false);
   });
 
   test('A point inside a BBox should return true for isPointInsideBBox method', () => {
-    expect(isPointInsideBBox({
-      latitude: 40.1,
-      longitude: -4,
-    }, [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(true);
+    expect(
+      isPointInsideBBox(
+        {
+          latitude: 40.1,
+          longitude: -4,
+        },
+        [-4.570313, 39.376772, -2.27417, 40.930115],
+      ),
+    ).toBe(true);
   });
 
   test('A point outside a BBox should return false for isPointInsideBBox method', () => {
-    expect(isPointInsideBBox({
-      latitude: 5,
-      longitude: -4,
-    }, [-4.570313, 39.376772, -2.27417, 40.930115])).toBe(false);
+    expect(
+      isPointInsideBBox(
+        {
+          latitude: 5,
+          longitude: -4,
+        },
+        [-4.570313, 39.376772, -2.27417, 40.930115],
+      ),
+    ).toBe(false);
   });
 
   test('The geohashes inside should return no duplicates', () => {
-    const geohashesInside = getGeohashesInBBox([-47.94433593750001, 22.187404991398786, 37.17773437500001, 59.77852198502987], 2);
+    const geohashesInside = getGeohashesInBBox(
+      [
+        -47.94433593750001, 22.187404991398786, 37.17773437500001,
+        59.77852198502987,
+      ],
+      2,
+    );
 
     const counter: Record<string, number> = {};
 
@@ -179,15 +226,21 @@ describe('Testing BBoxHelper methods', () => {
   });
 
   test('The geohashes inside a big enough area should be more than 0', () => {
-    const geohashesInside = getGeohashesInBBox([-3.738152, 40.431167, -3.73592, 40.432625], 8, true);
+    const geohashesInside = getGeohashesInBBox(
+      [-3.738152, 40.431167, -3.73592, 40.432625],
+      8,
+      true,
+    );
 
     expect(geohashesInside.length).toBeGreaterThanOrEqual(1);
   });
 
   test('Test PostGIS methods', () => {
     const sentence = getBBoxPostGISSentence(testBBox);
-    const {sw, se, ne, nw} = enforceLonLatCorners(bboxCorners);
+    const { sw, se, ne, nw } = enforceLonLatCorners(bboxCorners);
 
-    expect(sentence).toBe(`ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`);
+    expect(sentence).toBe(
+      `ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`,
+    );
   });
 });

@@ -1,5 +1,5 @@
 import Formatter from 'string-object-formatter';
-import { BBox } from './bbox';
+import type { BBox } from './bbox';
 import { BBoxToCorners, checkBBox, enforceLonLatCorners } from './helpers';
 
 /**
@@ -12,7 +12,11 @@ import { BBoxToCorners, checkBBox, enforceLonLatCorners } from './helpers';
  * @param  {string} longitudeCol The longitude column name
  * @return {string} The SQL sentence
  */
-export function getBBoxSQLSentence(bbox: BBox, latitudeCol: string, longitudeCol: string): string {
+export function getBBoxSQLSentence(
+  bbox: BBox,
+  latitudeCol: string,
+  longitudeCol: string,
+): string {
   checkBBox(bbox);
 
   const [minLon, minLat, maxLon, maxLat] = bbox;
@@ -38,9 +42,7 @@ export function getBBoxSQLSentence(bbox: BBox, latitudeCol: string, longitudeCol
  * @return {string} The SQL sentences
  */
 export function getBBoxPostGISSentence(bbox: BBox): string {
-  const {
-    sw, se, nw, ne,
-  } = enforceLonLatCorners(BBoxToCorners(bbox));
+  const { sw, se, nw, ne } = enforceLonLatCorners(BBoxToCorners(bbox));
 
   return `ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`;
 }
