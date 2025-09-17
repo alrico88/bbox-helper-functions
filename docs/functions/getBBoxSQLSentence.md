@@ -8,7 +8,7 @@
 
 > **getBBoxSQLSentence**(`bbox`, `latitudeCol`, `longitudeCol`): `string`
 
-Defined in: [modules/sql.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/sql.ts#L15)
+Defined in: [modules/sql.ts:14](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/sql.ts#L14)
 
 Gets a SQL sentence to use to filter a BBox
 Checks if a certain column value is inside a BBox
@@ -38,5 +38,3 @@ The longitude column name
 `string`
 
 The SQL sentence
-
-## Export

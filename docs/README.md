@@ -6,6 +6,7 @@
 
 ## Interfaces
 
+- [Corners](interfaces/Corners.md)
 - [DatasetOptions](interfaces/DatasetOptions.md)
 - [GeoPoint](interfaces/GeoPoint.md)
 
@@ -13,6 +14,7 @@
 
 - [AccessorFunction](type-aliases/AccessorFunction.md)
 - [BBox](type-aliases/BBox.md)
+- [Coord](type-aliases/Coord.md)
 
 ## Functions
 
@@ -20,6 +22,7 @@
 - [BBoxToGeoJSONFeature](functions/BBoxToGeoJSONFeature.md)
 - [BBoxToGeoJSONPolygon](functions/BBoxToGeoJSONPolygon.md)
 - [BBoxToWKT](functions/BBoxToWKT.md)
+- [doBBoxesIntersect](functions/doBBoxesIntersect.md)
 - [getBBoxPostGISSentence](functions/getBBoxPostGISSentence.md)
 - [getBBoxSQLSentence](functions/getBBoxSQLSentence.md)
 - [getDatasetBBox](functions/getDatasetBBox.md)

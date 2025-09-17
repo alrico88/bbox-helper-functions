@@ -7,7 +7,6 @@ import type { BBox } from './bbox';
 /**
  * Converts a BBox to WKT
  *
- * @export
  * @param  {BBox} bbox The BBox to convert to WKT
  * @return {string} The resulting WKT
  */
@@ -21,7 +20,7 @@ export function BBoxToWKT(bbox: BBox): string {
 
 /**
  * Gets the BBox of a WKT
- * @export
+ *
  * @param  {string} wkt The WKT to get BBox of
  * @return {BBox} The WKT BBox
  */

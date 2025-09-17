@@ -6,7 +6,6 @@ import { BBoxToCorners, checkBBox, enforceLonLatCorners } from './helpers';
  * Gets a SQL sentence to use to filter a BBox
  * Checks if a certain column value is inside a BBox
  *
- * @export
  * @param  {BBox} bbox The BBox to use as filter
  * @param  {string} latitudeCol The latitude column name
  * @param  {string} longitudeCol The longitude column name

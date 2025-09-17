@@ -8,7 +8,7 @@
 
 > **getGeohashBBox**(`geohash`): [`BBox`](../type-aliases/BBox.md)
 
-Defined in: [modules/geohash.ts:12](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geohash.ts#L12)
+Defined in: [modules/geohash.ts:11](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geohash.ts#L11)
 
 Gets the BBox of a given geohash
 
@@ -25,5 +25,3 @@ Geohash to find BBox of
 [`BBox`](../type-aliases/BBox.md)
 
 The BBox of the geohash
-
-## Export

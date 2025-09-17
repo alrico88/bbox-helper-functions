@@ -8,7 +8,7 @@
 
 > **getWKTBBox**(`wkt`): [`BBox`](../type-aliases/BBox.md)
 
-Defined in: [modules/wk.ts:28](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/wk.ts#L28)
+Defined in: [modules/wk.ts:27](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/wk.ts#L27)
 
 Gets the BBox of a WKT
 
@@ -25,5 +25,3 @@ The WKT to get BBox of
 [`BBox`](../type-aliases/BBox.md)
 
 The WKT BBox
-
-## Export

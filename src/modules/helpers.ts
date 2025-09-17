@@ -3,7 +3,6 @@ import type { BBox } from './bbox';
 /**
  * Converts lat lon array to lon lat array
  *
- * @export
  * @param  {number[]} array [lat, lon] array to convert
  * @return {number[]} [lon, lat] array
  */
@@ -14,7 +13,6 @@ export function latLonToLonLat(array: number[]): number[] {
 /**
  * Checks if BBox is valid
  *
- * @export
  * @param  {(BBox | number[])} bbox BBox to check
  * @return {void}
  */
@@ -32,7 +30,7 @@ export function checkBBox(bbox: BBox | number[]): void {
   }
 }
 
-type Coord = [number, number];
+export type Coord = [number, number];
 
 export interface Corners {
   sw: Coord;
@@ -82,7 +80,6 @@ class CornersFromBBox {
 /**
  * Gets corners from a bbox
  *
- * @export
  * @param  {BBox} bbox BBox to get corners of
  * @return {Corners} The corners as [lat, lon] coordinates
  */
@@ -112,7 +109,6 @@ export function enforceLonLatCorners(corners: Corners): Corners {
 /**
  * Checks if number is between a min and max
  *
- * @export
  * @param {number} toCheck
  * @param {number} min
  * @param {number} max
@@ -125,7 +121,6 @@ export function isBetween(toCheck: number, min: number, max: number): boolean {
 /**
  * Gets an array of unique values
  *
- * @export
  * @template T
  * @param {T[]} array Array to find uniques of
  * @return {T[]} The unique values

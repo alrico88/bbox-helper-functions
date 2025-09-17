@@ -8,7 +8,7 @@
 
 > **BBoxToWKT**(`bbox`): `string`
 
-Defined in: [modules/wk.ts:14](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/wk.ts#L14)
+Defined in: [modules/wk.ts:13](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/wk.ts#L13)
 
 Converts a BBox to WKT
 
@@ -25,5 +25,3 @@ The BBox to convert to WKT
 `string`
 
 The resulting WKT
-
-## Export

@@ -17,7 +17,6 @@ class DefaultDatasetOptions<T> implements DatasetOptions<T> {
 /**
  * Gets the BBox of an array of objects
  *
- * @export
  * @template T
  * @param {T[]} dataset Dataset to find BBox of
  * @param {DatasetOptions} [datasetOptions=new DefaultDatasetOptions()] Options for defining latitude and longitude props or accessors

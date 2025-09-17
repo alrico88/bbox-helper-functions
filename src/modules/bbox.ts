@@ -8,7 +8,6 @@ export interface GeoPoint {
 /**
  * Checks if a BBox is completely contained in another BBox
  *
- * @export
  * @param {BBox} bboxToCheck The BBox to check if it's inside
  * @param {BBox} bboxContainer The BBox container
  * @return {boolean} Whether the BBox is inside the other BBox
@@ -33,7 +32,6 @@ export function isBBoxInsideBBox(
 /**
  * Checks if a point is inside a BBox
  *
- * @export
  * @param {GeoPoint} point The point to check
  * @param {BBox} bbox The BBox to check
  * @return {boolean} Whether the point is inside the BBox
@@ -45,4 +43,23 @@ export function isPointInsideBBox(point: GeoPoint, bbox: BBox): boolean {
   const isLongitudeOK = longitude >= minLon && longitude <= maxLon;
 
   return isLatitudeOK && isLongitudeOK;
+}
+
+/**
+ * Checks if a BBox intersects another
+ *
+ * @param {BBox} a A BBox
+ * @param {BBox} b Another BBox
+ * @return {boolean}
+ */
+export function doBBoxesIntersect(a: BBox, b: BBox) {
+  const [aMinLon, aMinLat, aMaxLon, aMaxLat] = a;
+  const [bMinLon, bMinLat, bMaxLon, bMaxLat] = b;
+
+  return (
+    aMinLon <= bMaxLon &&
+    aMaxLon >= bMinLon &&
+    aMinLat <= bMaxLat &&
+    aMaxLat >= bMinLat
+  );
 }

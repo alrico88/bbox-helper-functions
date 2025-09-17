@@ -8,7 +8,7 @@
 
 > **isBBoxInsideBBox**(`bboxToCheck`, `bboxContainer`): `boolean`
 
-Defined in: [modules/bbox.ts:16](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L16)
+Defined in: [modules/bbox.ts:15](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L15)
 
 Checks if a BBox is completely contained in another BBox
 
@@ -31,5 +31,3 @@ The BBox container
 `boolean`
 
 Whether the BBox is inside the other BBox
-
-## Export

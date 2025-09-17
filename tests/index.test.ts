@@ -13,6 +13,7 @@ import {
   isPointInsideBBox,
   getGeohashesInBBox,
   getBBoxPostGISSentence,
+  doBBoxesIntersect,
 } from '../src';
 import { convertToWK } from 'wkt-parser-helper';
 import { geohashToPolygonFeature } from 'geohash-to-geojson';
@@ -242,5 +243,29 @@ describe('Testing BBoxHelper methods', () => {
     expect(sentence).toBe(
       `ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(${sw.toString()}),ST_GEOGPOINT(${nw.toString()}),ST_GEOGPOINT(${ne.toString()}),ST_GEOGPOINT(${se.toString()})]))`,
     );
+  });
+});
+
+const outer: BBox = [0, 0, 10, 10];
+
+describe('doBBoxesIntersect checks', () => {
+  test('should return true when they partially overlap', () => {
+    const other: BBox = [5, 5, 15, 15];
+    expect(doBBoxesIntersect(outer, other)).toBe(true);
+  });
+
+  test('should return true when one is completely inside the other', () => {
+    const other: BBox = [2, 2, 5, 5];
+    expect(doBBoxesIntersect(outer, other)).toBe(true);
+  });
+
+  test('should return false when they do not overlap at all', () => {
+    const other: BBox = [11, 11, 20, 20];
+    expect(doBBoxesIntersect(outer, other)).toBe(false);
+  });
+
+  test('should return true when they only touch at the edge', () => {
+    const other: BBox = [10, 0, 20, 10];
+    expect(doBBoxesIntersect(outer, other)).toBe(true);
   });
 });

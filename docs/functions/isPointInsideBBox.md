@@ -8,7 +8,7 @@
 
 > **isPointInsideBBox**(`point`, `bbox`): `boolean`
 
-Defined in: [modules/bbox.ts:41](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L41)
+Defined in: [modules/bbox.ts:39](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/bbox.ts#L39)
 
 Checks if a point is inside a BBox
 
@@ -31,5 +31,3 @@ The BBox to check
 `boolean`
 
 Whether the point is inside the BBox
-
-## Export

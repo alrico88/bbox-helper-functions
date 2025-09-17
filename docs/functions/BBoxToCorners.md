@@ -6,9 +6,9 @@
 
 # Function: BBoxToCorners()
 
-> **BBoxToCorners**(`bbox`): `Corners`
+> **BBoxToCorners**(`bbox`): [`Corners`](../interfaces/Corners.md)
 
-Defined in: [modules/helpers.ts:89](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/helpers.ts#L89)
+Defined in: [modules/helpers.ts:86](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/helpers.ts#L86)
 
 Gets corners from a bbox
 
@@ -22,8 +22,6 @@ BBox to get corners of
 
 ## Returns
 
-`Corners`
+[`Corners`](../interfaces/Corners.md)
 
 The corners as [lat, lon] coordinates
-
-## Export
