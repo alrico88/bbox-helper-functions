@@ -1,6 +1,8 @@
-import { decode_bbox, bboxes, decode } from 'ngeohash';
+import ngeohash from 'ngeohash';
 import type { BBox } from './bbox';
 import { isBetween } from './helpers';
+
+const { decode_bbox, bboxes, decode } = ngeohash;
 
 /**
  * Gets the BBox of a given geohash
