@@ -1,6 +1,6 @@
 {
   "name": "bbox-helper-functions",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "description": "Helper functions to convert BBoxes to multiple formats",
   "type": "module",
   "exports": {
