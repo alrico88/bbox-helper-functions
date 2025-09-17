@@ -3,6 +3,7 @@ export {
   type GeoPoint,
   isPointInsideBBox,
   isBBoxInsideBBox,
+  doBBoxesIntersect,
 } from './modules/bbox';
 export { getGeohashBBox, getGeohashesInBBox } from './modules/geohash';
 export {
@@ -10,7 +11,7 @@ export {
   BBoxToGeoJSONPolygon,
   getGeoJSONBBox,
 } from './modules/geojson';
-export { BBoxToCorners } from './modules/helpers';
+export { BBoxToCorners, type Corners, type Coord } from './modules/helpers';
 export { getBBoxSQLSentence, getBBoxPostGISSentence } from './modules/sql';
 export { BBoxToWKT, getWKTBBox } from './modules/wk';
 export { getDatasetBBox } from './modules/datasets';

@@ -5,7 +5,6 @@ import { isBetween } from './helpers';
 /**
  * Gets the BBox of a given geohash
  *
- * @export
  * @param {string} geohash Geohash to find BBox of
  * @return {BBox}  The BBox of the geohash
  */
@@ -28,7 +27,6 @@ function isGeohashCentroidInBBox(geohash: string, bbox: BBox): boolean {
 /**
  * Gets all the geohashes inside a BBox
  *
- * @export
  * @param {BBox} bbox The BBox
  * @param {number} precision Precision for the geohashes
  * @param {boolean} [strict=false] Only return geohashes whose centroids are inside BBox

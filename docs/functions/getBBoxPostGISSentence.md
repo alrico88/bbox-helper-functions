@@ -8,7 +8,7 @@
 
 > **getBBoxPostGISSentence**(`bbox`): `string`
 
-Defined in: [modules/sql.ts:44](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/sql.ts#L44)
+Defined in: [modules/sql.ts:43](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/sql.ts#L43)
 
 Creates a PostGIS bounding box expression from a BBox
 

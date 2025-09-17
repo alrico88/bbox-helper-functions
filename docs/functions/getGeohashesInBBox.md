@@ -8,7 +8,7 @@
 
 > **getGeohashesInBBox**(`bbox`, `precision`, `strict?`): `string`[]
 
-Defined in: [modules/geohash.ts:37](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geohash.ts#L37)
+Defined in: [modules/geohash.ts:35](https://github.com/alrico88/bbox-helper-functions/blob/master/src/modules/geohash.ts#L35)
 
 Gets all the geohashes inside a BBox
 
@@ -37,5 +37,3 @@ Only return geohashes whose centroids are inside BBox
 `string`[]
 
 Array of geohash strings
-
-## Export
